@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coffee-brown: #4A2C2A;
+  --cream: #F5ECD9;
+  --caramel: #C68E17;
+  --espresso-black: #231F20;
+  --latte-foam: #E6D7B9;
+  
+  /* Additional UI Colors */
+  --light-gray: #f8f8f8;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #666666;
+  --success-green: #2e7d32;
+  --error-red: #c62828;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--espresso-black);
+  background-color: var(--cream);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  color: var(--coffee-brown);
+  margin-bottom: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--coffee-brown);
+  margin-top: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--coffee-brown);
+  color: var(--cream);
+  border: 2px solid var(--coffee-brown);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--coffee-brown);
+}
+
+.btn-secondary {
+  background-color: var(--caramel);
+  color: var(--cream);
+  border: 2px solid var(--caramel);
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  color: var(--caramel);
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  color: var(--cream);
+  text-align: center;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-origin {
+  color: var(--dark-gray);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.product-roast {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.roast-level {
+  display: flex;
+  margin-left: 0.5rem;
+}
+
+.roast-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--medium-gray);
+  margin-right: 4px;
+}
+
+.roast-dot.active {
+  background-color: var(--coffee-brown);
+}
+
+.product-price {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--coffee-brown);
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}

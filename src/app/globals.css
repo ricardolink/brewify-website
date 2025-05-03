@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coffee-brown: #4A2C2A;
+  --cream: #F5ECD9;
+  --caramel: #C68E17;
+  --espresso-black: #231F20;
+  --latte-foam: #E6D7B9;
+}
