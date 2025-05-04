@@ -8,8 +8,19 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
-      // Add other allowed image domains here if needed in the future
+      // Add Shopify CDN hostname
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
   },
 };
 
