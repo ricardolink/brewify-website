@@ -110,11 +110,28 @@ export function MemberDetailModal({
         break;
       }
       case "instagram": {
-        // Download the share card so they can post it to Stories
         const dataUrl = await captureCard();
-        if (dataUrl) {
+        if (!dataUrl) break;
+
+        // Convert data URL → Blob → File
+        const res = await fetch(dataUrl);
+        const blob = await res.blob();
+        const file = new File([blob], `brewify-the100-${member.number}.png`, { type: "image/png" });
+
+        // Try Web Share API with file — on iOS/Android this opens the native share
+        // sheet where Instagram Stories appears as a direct destination
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: `${member.blendName} — Brewify THE 100`,
+              text: `Founding Member #${member.number} · ${SITE_URL}/the-100`,
+            });
+          } catch { /* user cancelled */ }
+        } else {
+          // Desktop fallback — download the image
           const link = document.createElement("a");
-          link.download = `brewify-the100-${member.number}.png`;
+          link.download = file.name;
           link.href = dataUrl;
           link.click();
           setIgDownloaded(true);
@@ -343,8 +360,8 @@ export function MemberDetailModal({
                         >
                           <span>📸</span>
                           <span className="flex flex-col items-start leading-tight text-left">
-                            <span>Instagram</span>
-                            {igDownloaded && <span className="text-[9px] text-brew-warm-gray normal-case tracking-normal">Card saved ✓ open IG</span>}
+                            <span>Instagram Stories</span>
+                            {igDownloaded && <span className="text-[9px] text-brew-warm-gray normal-case tracking-normal">Saved — open Instagram</span>}
                           </span>
                         </button>
 
@@ -386,7 +403,7 @@ export function MemberDetailModal({
                       </div>
 
                       <p className="text-[9px] text-brew-warm-gray/60 leading-relaxed">
-                        Instagram: your share card image will download — open Instagram and post it to your Stories.
+                        Instagram tap opens Stories directly on mobile. Desktop saves the image to your device.
                       </p>
                     </div>
                   </motion.div>
