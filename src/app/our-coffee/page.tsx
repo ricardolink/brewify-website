@@ -138,12 +138,12 @@ export default function OurCoffeePage() {
       </section>
 
       {/* VALUES */}
-      <section className="bg-[#f5f2ee] text-brew-black py-20 md:py-24 px-6 md:px-12 lg:px-24">
+      <section className="bg-zinc-950 py-20 md:py-24 px-6 md:px-12 lg:px-24 border-t border-zinc-900">
         <div className="max-w-5xl mx-auto space-y-12">
           <Fade>
             <div className="space-y-2">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-black/50">What we stand for</p>
-              <h2 className="text-2xl md:text-3xl font-medium">Built differently. On purpose.</h2>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">What we stand for</p>
+              <h2 className="text-2xl md:text-3xl font-medium text-brew-ivory">Built differently. On purpose.</h2>
             </div>
           </Fade>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -151,8 +151,8 @@ export default function OurCoffeePage() {
               <Fade key={v.title} delay={i * 0.07}>
                 <div className="space-y-3">
                   <span className="text-2xl">{v.icon}</span>
-                  <h3 className="text-sm font-medium">{v.title}</h3>
-                  <p className="text-sm text-brew-black/65 leading-relaxed">{v.body}</p>
+                  <h3 className="text-sm font-medium text-brew-ivory">{v.title}</h3>
+                  <p className="text-sm text-brew-warm-gray leading-relaxed">{v.body}</p>
                 </div>
               </Fade>
             ))}

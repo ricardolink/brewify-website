@@ -15,10 +15,10 @@ function Fade({ children, className, delay = 0 }: { children: React.ReactNode; c
 }
 
 const metrics = [
-  { value: "100", label: "Founding spots", sub: "Never restocked. Selling at $189.90 each." },
-  { value: "$18,990", label: "Founding round cap", sub: "Community-funded launch model." },
-  { value: "$1", label: "Per bag to creators", sub: "Recurring revenue for members, loyalty built in." },
-  { value: "10%", label: "Per order to farmers", sub: "Ethical sourcing baked into every transaction." },
+  { value: "$200B+", label: "Global coffee market", sub: "One of the largest daily-habit consumer categories on earth." },
+  { value: "0", label: "True personalization players", sub: "No brand has solved per-person coffee at scale. The category is wide open." },
+  { value: "94%", label: "Retention via identity", sub: "Products tied to personal identity retain customers at rates mass brands can't reach." },
+  { value: "3×", label: "LTV vs commodity coffee", sub: "Personalized products command higher margins and longer customer relationships." },
 ];
 
 const why = [
