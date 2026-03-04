@@ -226,7 +226,9 @@ export function MemberDetailModal({
             {/* Revenue */}
             <div className="border border-zinc-800/80 rounded-lg p-5 space-y-4">
               <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">{t.modal.blendRevenue}</p>
-              <p className="text-3xl md:text-4xl font-medium text-brew-ivory">{member.pointsEarned} pts</p>
+              <p className="text-3xl md:text-4xl font-medium text-brew-ivory">
+                ${member.ordersCount.toFixed(2)}
+              </p>
               <p className="text-sm text-brew-warm-gray">{member.ordersCount} {t.modal.orders}</p>
               <p className="text-[11px] text-brew-warm-gray">{t.modal.redeemable}</p>
               <div className="h-1.5 bg-zinc-900 rounded-full overflow-hidden">

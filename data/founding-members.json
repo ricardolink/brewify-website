@@ -3,39 +3,54 @@
     "number": "001",
     "blendName": "Still Water No. 7",
     "roastLevel": "Medium",
-    "flavorNotes": ["Brown sugar", "Cedar", "Quiet mornings"],
+    "flavorNotes": [
+      "Brown sugar",
+      "Cedar",
+      "Quiet mornings"
+    ],
     "emotionalDescription": "A steady, unhurried cup that sits just to the side of your thoughts. It doesn't ask for attention; it makes space for it.",
     "instagram": "@javiermoore",
-    "pointsEarned": 240,
+    "pointsEarned": 24,
     "ordersCount": 24,
     "owner": "@javiermoore",
     "createdAt": "2026-02-14T00:00:00.000Z",
-    "transferHistory": []
+    "transferHistory": [],
+    "dollarsEarned": 24
   },
   {
     "number": "002",
     "blendName": "Meridian",
     "roastLevel": "Light",
-    "flavorNotes": ["Lemon oil", "Almond", "Clean air"],
+    "flavorNotes": [
+      "Lemon oil",
+      "Almond",
+      "Clean air"
+    ],
     "emotionalDescription": "A bright line through the middle of your day. The moment you remember you can start again at any hour.",
     "instagram": "@solenneart",
-    "pointsEarned": 180,
+    "pointsEarned": 18,
     "ordersCount": 18,
     "owner": "@solenneart",
     "createdAt": "2026-02-17T00:00:00.000Z",
-    "transferHistory": []
+    "transferHistory": [],
+    "dollarsEarned": 18
   },
   {
     "number": "003",
     "blendName": "Low Season",
     "roastLevel": "Dark",
-    "flavorNotes": ["Smoke", "Dark cherry", "Rain"],
+    "flavorNotes": [
+      "Smoke",
+      "Dark cherry",
+      "Rain"
+    ],
     "emotionalDescription": "For the quiet months. Deep, grounded, and unapologetically slow.",
     "instagram": "@kaito.w",
-    "pointsEarned": 60,
+    "pointsEarned": 6,
     "ordersCount": 6,
     "owner": "@kaito.w",
     "createdAt": "2026-02-21T00:00:00.000Z",
-    "transferHistory": []
+    "transferHistory": [],
+    "dollarsEarned": 6
   }
 ]

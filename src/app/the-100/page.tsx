@@ -229,7 +229,7 @@ export default function TheHundredPage() {
                       ))}
                     </div>
                     <span className="text-[11px] text-brew-warm-gray shrink-0">
-                      {m.ordersCount} {t.the100.orders} · {m.pointsEarned} {t.the100.pts}
+                      {m.ordersCount} {t.the100.orders} · ${m.ordersCount.toFixed(2)} {t.the100.pts}
                     </span>
 
                     {/* "View" hint — fades in on hover */}
