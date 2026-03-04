@@ -198,20 +198,32 @@ export default function TheHundredPage() {
             <>
               <div className="space-y-0">
                 {claimed.map((m) => (
-                  <button
+                  <motion.button
                     key={m.number}
                     type="button"
                     onClick={() => setSelected(m)}
-                    className="w-full text-left py-5 border-t border-zinc-800/80 flex flex-wrap items-center gap-4 md:gap-8 hover:border-brew-ivory/20 transition-colors group"
+                    whileHover={{ x: 6 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="w-full text-left py-5 border-t border-zinc-800/80 flex flex-wrap items-center gap-4 md:gap-8 group relative"
                   >
-                    <span className="font-mono text-2xl md:text-3xl text-brew-warm-gray w-16 shrink-0">{m.number}</span>
-                    <span className="flex-1 min-w-0 font-medium text-lg md:text-xl text-brew-ivory/90 group-hover:text-brew-ivory transition-colors">
+                    {/* Animated left accent bar */}
+                    <motion.span
+                      className="absolute left-0 top-0 bottom-0 w-[2px] bg-brew-ivory origin-top"
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      whileHover={{ scaleY: 1, opacity: 1 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                    />
+
+                    <span className="font-mono text-2xl md:text-3xl text-brew-warm-gray group-hover:text-brew-ivory/60 transition-colors duration-150 w-16 shrink-0">
+                      {m.number}
+                    </span>
+                    <span className="flex-1 min-w-0 font-medium text-lg md:text-xl text-brew-ivory/90 group-hover:text-brew-ivory transition-colors duration-150">
                       {m.blendName}
                     </span>
                     <span className="text-sm text-brew-warm-gray shrink-0">{m.instagram}</span>
                     <div className="flex flex-wrap gap-2 shrink-0">
                       {m.flavorNotes.map((n) => (
-                        <span key={n} className="px-2 py-0.5 text-[10px] uppercase tracking-wider border border-brew-warm-gray/50 rounded text-brew-warm-gray">
+                        <span key={n} className="px-2 py-0.5 text-[10px] uppercase tracking-wider border border-brew-warm-gray/50 group-hover:border-brew-ivory/30 rounded text-brew-warm-gray group-hover:text-brew-ivory/70 transition-colors duration-150">
                           {n}
                         </span>
                       ))}
@@ -219,7 +231,17 @@ export default function TheHundredPage() {
                     <span className="text-[11px] text-brew-warm-gray shrink-0">
                       {m.ordersCount} {t.the100.orders} · {m.pointsEarned} {t.the100.pts}
                     </span>
-                  </button>
+
+                    {/* "View" hint — fades in on hover */}
+                    <motion.span
+                      className="text-[10px] uppercase tracking-[0.25em] text-brew-ivory/50 shrink-0 hidden md:inline"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      View →
+                    </motion.span>
+                  </motion.button>
                 ))}
               </div>
 
