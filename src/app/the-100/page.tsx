@@ -14,7 +14,7 @@ function pad3(n: number) {
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1800&q=80";
 const FARMER_IMAGE =
-  "https://images.unsplash.com/photo-1611735341450-74d61e660ad2?w=900&q=80";
+  "https://images.unsplash.com/photo-1772228616071-aa344913b93e?w=900&q=80";
 const EDITORIAL_IMAGE =
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800&q=80";
 
