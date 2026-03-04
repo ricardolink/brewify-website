@@ -10,7 +10,7 @@ const config: Config = {
       colors: {
         "brew-black": "#0a0a0a",
         "brew-ivory": "#f5f2ee",
-        "brew-warm-gray": "#a09a94",
+        "brew-warm-gray": "#c4bdb6",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
