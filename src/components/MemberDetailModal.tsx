@@ -67,7 +67,7 @@ export function MemberDetailModal({
     if (!shareCardRef.current) return;
     try {
       const canvas = await html2canvas(shareCardRef.current, {
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#1a1a1a",
         scale: 2,
       });
       const link = document.createElement("a");

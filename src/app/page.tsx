@@ -87,7 +87,7 @@ export default function Home() {
         className="min-h-[100svh] flex flex-col items-center justify-center px-6 pt-20 pb-20 relative"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(60,40,20,0.25) 0%, transparent 60%), #0a0a0a",
+            "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(60,40,20,0.25) 0%, transparent 60%), #1a1a1a",
         }}
       >
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
@@ -201,7 +201,7 @@ export default function Home() {
       {/* Feature bar — dark charcoal strip */}
       <section
         className="border-t border-zinc-800/80 min-h-[200px] flex items-center"
-        style={{ background: "#111111" }}
+        style={{ background: "#242424" }}
       >
         <div className="w-full max-w-6xl mx-auto px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-center">
           <div className="space-y-2">

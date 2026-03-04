@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "brew-black": "#0a0a0a",
+        "brew-black": "#1a1a1a",
         "brew-ivory": "#f5f2ee",
         "brew-warm-gray": "#c4bdb6",
       },
