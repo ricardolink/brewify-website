@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import html2canvas from "html2canvas";
 import type { FoundingMember } from "@/types/founding";
+import { useLanguage } from "@/context/LanguageContext";
 
 const SITE_URL = "https://brewifycoffee.com";
 
@@ -20,6 +21,7 @@ export function MemberDetailModal({
   onOrder,
   onTransfer,
 }: MemberDetailModalProps) {
+  const { t } = useLanguage();
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [showTransferInput, setShowTransferInput] = useState(false);
   const [transferValue, setTransferValue] = useState("");
@@ -88,7 +90,7 @@ export function MemberDetailModal({
       >
         <button
           type="button"
-          aria-label="Close"
+          aria-label={t.modal.close}
           onClick={onClose}
           className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         />
@@ -105,31 +107,26 @@ export function MemberDetailModal({
               onClick={onClose}
               className="text-brew-warm-gray hover:text-brew-ivory transition-colors text-sm uppercase tracking-widest"
             >
-              Close
+              {t.modal.close}
             </button>
           </div>
 
           <div className="p-6 space-y-8">
             <p className="text-[11px] text-brew-warm-gray leading-relaxed">
-              10% of this blend&apos;s orders support farming families in the
-              Amazon.
+              {t.modal.amazonNote}
             </p>
 
             {/* Header */}
             <div>
-              <p className="font-mono text-3xl md:text-4xl text-brew-ivory">
-                {member.number}
-              </p>
+              <p className="font-mono text-3xl md:text-4xl text-brew-ivory">{member.number}</p>
               <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray mt-1">
-                Founding member
+                {t.modal.foundingMember}
               </p>
             </div>
 
             {/* Blend details */}
             <div className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-medium">
-                {member.blendName}
-              </h2>
+              <h2 className="text-xl md:text-2xl font-medium">{member.blendName}</h2>
               <p className="text-xs uppercase tracking-[0.2em] text-brew-warm-gray">
                 {member.roastLevel} · #{member.number}
               </p>
@@ -152,24 +149,22 @@ export function MemberDetailModal({
                 <p className="text-xs text-brew-warm-gray">{member.instagram}</p>
               )}
               <p className="text-[11px] text-brew-warm-gray">
-                Crafted {dateCrafted}
+                {t.modal.crafted} {dateCrafted}
               </p>
             </div>
 
-            {/* Revenue section */}
+            {/* Revenue */}
             <div className="border border-zinc-800/80 rounded-lg p-5 space-y-4">
               <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">
-                Blend revenue
+                {t.modal.blendRevenue}
               </p>
               <p className="text-3xl md:text-4xl font-medium text-brew-ivory">
                 {member.pointsEarned} pts
               </p>
               <p className="text-sm text-brew-warm-gray">
-                {member.ordersCount} orders
+                {member.ordersCount} {t.modal.orders}
               </p>
-              <p className="text-[11px] text-brew-warm-gray">
-                Redeemable in the Gift Store or cash equivalent
-              </p>
+              <p className="text-[11px] text-brew-warm-gray">{t.modal.redeemable}</p>
               <div className="h-1.5 bg-zinc-900 rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-brew-ivory/80 rounded-full"
@@ -179,21 +174,17 @@ export function MemberDetailModal({
                 />
               </div>
               <div className="space-y-2 text-[11px] text-brew-warm-gray">
-                <p>1 point = $0.10 store credit</p>
-                <p>Minimum redemption: 100 points ($10)</p>
+                <p>{t.modal.pointValue}</p>
+                <p>{t.modal.minRedemption}</p>
                 <button
                   type="button"
                   onClick={() => setShowEarningsHelp((s) => !s)}
                   className="text-left underline underline-offset-2 hover:text-brew-ivory transition-colors"
                 >
-                  How earnings work →
+                  {t.modal.howEarnings}
                 </button>
                 {showEarningsHelp && (
-                  <p className="pt-2 leading-relaxed">
-                    Every time someone orders your blend, you earn 10 points.
-                    Points can be redeemed in the Gift Store for merchandise or
-                    as store credit toward future orders.
-                  </p>
+                  <p className="pt-2 leading-relaxed">{t.modal.earningsExplain}</p>
                 )}
               </div>
             </div>
@@ -201,7 +192,7 @@ export function MemberDetailModal({
             {/* Ownership */}
             <div className="space-y-3">
               <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">
-                Current owner
+                {t.modal.currentOwner}
               </p>
               <p className="text-sm">{owner}</p>
               {!showTransferInput ? (
@@ -210,13 +201,13 @@ export function MemberDetailModal({
                   onClick={() => setShowTransferInput(true)}
                   className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-4 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-brew-ivory hover:text-brew-black transition-colors"
                 >
-                  Transfer ownership
+                  {t.modal.transferBtn}
                 </button>
               ) : (
                 <div className="space-y-2">
                   <input
                     type="text"
-                    placeholder="Enter recipient's @instagram or email"
+                    placeholder={t.modal.transferPlaceholder}
                     value={transferValue}
                     onChange={(e) => setTransferValue(e.target.value)}
                     className="w-full bg-transparent border border-zinc-800 px-3 py-2 text-sm outline-none focus:border-brew-ivory/80 placeholder:text-zinc-600"
@@ -228,28 +219,24 @@ export function MemberDetailModal({
                       disabled={transferLoading || !transferValue.trim()}
                       className="rounded-full border border-brew-ivory px-4 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-brew-ivory hover:text-brew-black transition-colors disabled:opacity-50"
                     >
-                      {transferLoading ? "Transferring…" : "Confirm"}
+                      {transferLoading ? t.modal.confirming : t.modal.confirm}
                     </button>
                     <button
                       type="button"
-                      onClick={() => {
-                        setShowTransferInput(false);
-                        setTransferValue("");
-                      }}
+                      onClick={() => { setShowTransferInput(false); setTransferValue(""); }}
                       className="rounded-full border border-zinc-700 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-brew-warm-gray hover:text-brew-ivory transition-colors"
                     >
-                      Cancel
+                      {t.modal.cancel}
                     </button>
                   </div>
                 </div>
               )}
               <p className="text-[10px] text-brew-warm-gray leading-relaxed">
-                Ownership transfers are permanent. This blend and its future
-                earnings transfer to the new owner.
+                {t.modal.transferWarning}
               </p>
             </div>
 
-            {/* Order section */}
+            {/* Order */}
             <div className="space-y-2">
               <button
                 type="button"
@@ -257,21 +244,19 @@ export function MemberDetailModal({
                 disabled={orderLoading}
                 className="w-full inline-flex items-center justify-center rounded-full bg-brew-ivory text-brew-black px-6 py-3 text-sm font-medium uppercase tracking-[0.2em] hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                {orderLoading ? "Ordering…" : "Order this blend"}
+                {orderLoading ? t.modal.ordering : t.modal.orderBtn}
               </button>
-              <p className="text-[10px] text-brew-warm-gray text-center">
-                When ordered, the creator earns 10 points.
-              </p>
+              <p className="text-[10px] text-brew-warm-gray text-center">{t.modal.earnNote}</p>
             </div>
 
-            {/* Share card (hidden, for capture) + Share button */}
+            {/* Share */}
             <div className="space-y-3">
               <button
                 type="button"
                 onClick={handleShareDownload}
                 className="w-full inline-flex items-center justify-center rounded-full border border-brew-ivory px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] hover:bg-brew-ivory hover:text-brew-black transition-colors"
               >
-                Share
+                {t.modal.share}
               </button>
               <div
                 ref={shareCardRef}
@@ -282,12 +267,8 @@ export function MemberDetailModal({
                 </p>
                 <p className="font-mono text-2xl mt-2">{member.number}</p>
                 <p className="text-lg font-medium mt-1">{member.blendName}</p>
-                <p className="text-xs text-brew-warm-gray mt-1">
-                  {member.flavorNotes.join(" · ")}
-                </p>
-                {member.instagram && (
-                  <p className="text-xs mt-2">{member.instagram}</p>
-                )}
+                <p className="text-xs text-brew-warm-gray mt-1">{member.flavorNotes.join(" · ")}</p>
+                {member.instagram && <p className="text-xs mt-2">{member.instagram}</p>}
                 <p className="text-[9px] uppercase tracking-[0.2em] text-brew-warm-gray mt-3">
                   {SITE_URL}/the-100
                 </p>

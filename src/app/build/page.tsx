@@ -13,6 +13,13 @@ import type {
 import { ShareableBlendCard } from "@/components/ShareableBlendCard";
 import { CoffeeBagMockup } from "@/components/CoffeeBagMockup";
 import { BREWIFY_ACCESS_KEY } from "@/components/Nav";
+import { useLanguage } from "@/context/LanguageContext";
+
+// English values sent to the API — do NOT translate these
+const MOOD_VALUES: MoodOption[] = ["Focused", "Calm", "Energized", "Reflective", "Exhausted"];
+const SEASON_VALUES: SeasonOption[] = ["Starting over", "In the grind", "Finding balance", "Celebrating", "Figuring it out"];
+const MOMENT_VALUES: CoffeeMomentOption[] = ["Early morning ritual", "Midday reset", "Late-night thinker", "Whenever I need to feel like myself"];
+const PRIORITY_VALUES: PriorityOption[] = ["Clarity", "Creativity", "Connection", "Momentum", "Rest"];
 
 type StepId = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -24,7 +31,6 @@ const containerVariants = {
 
 const optionBaseClasses =
   "w-full text-left border px-4 py-3 text-sm md:text-base rounded-lg transition-colors duration-150";
-
 const optionSelectedClasses =
   "bg-brew-ivory text-brew-black border-brew-ivory shadow-[0_0_0_1px_rgba(245,242,238,0.4)]";
 const optionUnselectedClasses =
@@ -40,6 +46,7 @@ const initialInputs: BlendInputs = {
 };
 
 export default function BuildPage() {
+  const { t } = useLanguage();
   const [step, setStep] = useState<StepId>(1);
   const [inputs, setInputs] = useState<BlendInputs>(initialInputs);
   const [isLoading, setIsLoading] = useState(false);
@@ -72,55 +79,36 @@ export default function BuildPage() {
   }, []);
 
   const goNext = () => {
-    if (step < 6) {
-      setStep((prev) => (prev + 1) as StepId);
-    }
+    if (step < 6) setStep((prev) => (prev + 1) as StepId);
   };
 
   const goBack = () => {
     if (isLoading) return;
-    if (step > 1) {
-      setStep((prev) => (prev - 1) as StepId);
-    }
+    if (step > 1) setStep((prev) => (prev - 1) as StepId);
   };
 
   const handleSubmit = async () => {
     setIsLoading(true);
     setError(null);
     setProfile(null);
-
     try {
       const res = await fetch("/api/generate-blend", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inputs),
       });
-
-      if (!res.ok) {
-        throw new Error("Failed to generate blend");
-      }
-
+      if (!res.ok) throw new Error("Failed to generate blend");
       const data = (await res.json()) as BlendProfile;
       setProfile(data);
       setStep(6);
-
       if (typeof window !== "undefined") {
         try {
-          window.localStorage.setItem(
-            "brewify-returning",
-            JSON.stringify({
-              name: inputs.name ?? null,
-            }),
-          );
-        } catch {
-          // ignore
-        }
+          window.localStorage.setItem("brewify-returning", JSON.stringify({ name: inputs.name ?? null }));
+        } catch { /* ignore */ }
       }
     } catch (err) {
       console.error(err);
-      setError("Something went wrong while designing your blend.");
+      setError(t.build.error);
     } finally {
       setIsLoading(false);
     }
@@ -135,25 +123,18 @@ export default function BuildPage() {
       <div className="max-w-5xl mx-auto flex flex-col gap-10 md:gap-16">
         <header className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-brew-warm-gray">
           <span>Brewify Coffee</span>
-          <span className="hidden md:inline">Blend Builder</span>
+          <span className="hidden md:inline">{t.build.header}</span>
         </header>
 
         <section className="grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,2fr)] items-start">
           <div className="space-y-8">
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.18em] text-brew-warm-gray">
-                Step {step} of 6
+                {t.build.stepOf(step)}
               </p>
               {isReturning && (
                 <p className="text-xs text-brew-warm-gray/90">
-                  {returningName ? (
-                    <>
-                      Welcome back, {returningName}. Let&apos;s see where your
-                      coffee wants to be today.
-                    </>
-                  ) : (
-                    <>Welcome back. Ready for another batch?</>
-                  )}
+                  {returningName ? t.build.welcomeBackName(returningName) : t.build.welcomeBack}
                 </p>
               )}
             </div>
@@ -161,44 +142,22 @@ export default function BuildPage() {
             <div className="relative min-h-[220px] md:min-h-[260px]">
               <AnimatePresence mode="wait">
                 {step === 1 && (
-                  <motion.div
-                    key="step-1"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-1" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      How are you feeling today?
+                      {t.build.step1Q}
                     </h1>
                     <div className="space-y-2">
-                      {[
-                        "Focused",
-                        "Calm",
-                        "Energized",
-                        "Reflective",
-                        "Exhausted",
-                      ].map((option) => {
-                        const isSelected = inputs.feeling === option;
+                      {MOOD_VALUES.map((value, i) => {
+                        const label = t.build.step1Options[i];
+                        const isSelected = inputs.feeling === value;
                         return (
                           <button
-                            key={option}
+                            key={value}
                             type="button"
-                            onClick={() =>
-                              setInputs((prev) => ({
-                                ...prev,
-                                feeling: option as MoodOption,
-                              }))
-                            }
-                            className={`${optionBaseClasses} ${
-                              isSelected
-                                ? optionSelectedClasses
-                                : optionUnselectedClasses
-                            }`}
+                            onClick={() => setInputs((prev) => ({ ...prev, feeling: value }))}
+                            className={`${optionBaseClasses} ${isSelected ? optionSelectedClasses : optionUnselectedClasses}`}
                           >
-                            {option}
+                            {label}
                           </button>
                         );
                       })}
@@ -207,71 +166,36 @@ export default function BuildPage() {
                 )}
 
                 {step === 2 && (
-                  <motion.div
-                    key="step-2"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-2" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      What are you building in your life right now?
+                      {t.build.step2Q}
                     </h2>
                     <textarea
                       className="w-full min-h-[130px] bg-transparent border border-zinc-800/80 px-4 py-3 text-sm md:text-base outline-none focus:border-brew-ivory/80 placeholder:text-zinc-600"
-                      placeholder="A new role. A slower rhythm. A business that feels like me..."
+                      placeholder={t.build.step2Placeholder}
                       value={inputs.building}
-                      onChange={(e) =>
-                        setInputs((prev) => ({
-                          ...prev,
-                          building: e.target.value,
-                        }))
-                      }
+                      onChange={(e) => setInputs((prev) => ({ ...prev, building: e.target.value }))}
                     />
                   </motion.div>
                 )}
 
                 {step === 3 && (
-                  <motion.div
-                    key="step-3"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-3" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      What&apos;s your current life season?
+                      {t.build.step3Q}
                     </h2>
                     <div className="space-y-2">
-                      {[
-                        "Starting over",
-                        "In the grind",
-                        "Finding balance",
-                        "Celebrating",
-                        "Figuring it out",
-                      ].map((option) => {
-                        const isSelected = inputs.season === option;
+                      {SEASON_VALUES.map((value, i) => {
+                        const label = t.build.step3Options[i];
+                        const isSelected = inputs.season === value;
                         return (
                           <button
-                            key={option}
+                            key={value}
                             type="button"
-                            onClick={() =>
-                              setInputs((prev) => ({
-                                ...prev,
-                                season: option as SeasonOption,
-                              }))
-                            }
-                            className={`${optionBaseClasses} ${
-                              isSelected
-                                ? optionSelectedClasses
-                                : optionUnselectedClasses
-                            }`}
+                            onClick={() => setInputs((prev) => ({ ...prev, season: value }))}
+                            className={`${optionBaseClasses} ${isSelected ? optionSelectedClasses : optionUnselectedClasses}`}
                           >
-                            {option}
+                            {label}
                           </button>
                         );
                       })}
@@ -280,43 +204,22 @@ export default function BuildPage() {
                 )}
 
                 {step === 4 && (
-                  <motion.div
-                    key="step-4"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-4" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      When do you reach for coffee most?
+                      {t.build.step4Q}
                     </h2>
                     <div className="space-y-2">
-                      {[
-                        "Early morning ritual",
-                        "Midday reset",
-                        "Late-night thinker",
-                        "Whenever I need to feel like myself",
-                      ].map((option) => {
-                        const isSelected = inputs.moment === option;
+                      {MOMENT_VALUES.map((value, i) => {
+                        const label = t.build.step4Options[i];
+                        const isSelected = inputs.moment === value;
                         return (
                           <button
-                            key={option}
+                            key={value}
                             type="button"
-                            onClick={() =>
-                              setInputs((prev) => ({
-                                ...prev,
-                                moment: option as CoffeeMomentOption,
-                              }))
-                            }
-                            className={`${optionBaseClasses} ${
-                              isSelected
-                                ? optionSelectedClasses
-                                : optionUnselectedClasses
-                            }`}
+                            onClick={() => setInputs((prev) => ({ ...prev, moment: value }))}
+                            className={`${optionBaseClasses} ${isSelected ? optionSelectedClasses : optionUnselectedClasses}`}
                           >
-                            {option}
+                            {label}
                           </button>
                         );
                       })}
@@ -325,114 +228,61 @@ export default function BuildPage() {
                 )}
 
                 {step === 5 && (
-                  <motion.div
-                    key="step-5"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-5" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      What matters most to you right now?
+                      {t.build.step5Q}
                     </h2>
                     <div className="space-y-2">
-                      {[
-                        "Clarity",
-                        "Creativity",
-                        "Connection",
-                        "Momentum",
-                        "Rest",
-                      ].map((option) => {
-                        const isSelected = inputs.priority === option;
+                      {PRIORITY_VALUES.map((value, i) => {
+                        const label = t.build.step5Options[i];
+                        const isSelected = inputs.priority === value;
                         return (
                           <button
-                            key={option}
+                            key={value}
                             type="button"
-                            onClick={() =>
-                              setInputs((prev) => ({
-                                ...prev,
-                                priority: option as PriorityOption,
-                              }))
-                            }
-                            className={`${optionBaseClasses} ${
-                              isSelected
-                                ? optionSelectedClasses
-                                : optionUnselectedClasses
-                            }`}
+                            onClick={() => setInputs((prev) => ({ ...prev, priority: value }))}
+                            className={`${optionBaseClasses} ${isSelected ? optionSelectedClasses : optionUnselectedClasses}`}
                           >
-                            {option}
+                            {label}
                           </button>
                         );
                       })}
                     </div>
                     <div className="space-y-3 pt-4">
                       <p className="text-xs uppercase tracking-[0.18em] text-brew-warm-gray">
-                        Optional
+                        {t.build.optionalLabel}
                       </p>
                       <input
                         type="text"
                         className="w-full bg-transparent border border-zinc-800/80 px-4 py-2.5 text-sm md:text-base outline-none focus:border-brew-ivory/80 placeholder:text-zinc-600"
-                        placeholder="Name for this blend on the label"
+                        placeholder={t.build.labelPlaceholder}
                         value={inputs.name ?? ""}
-                        onChange={(e) =>
-                          setInputs((prev) => ({
-                            ...prev,
-                            name: e.target.value,
-                          }))
-                        }
+                        onChange={(e) => setInputs((prev) => ({ ...prev, name: e.target.value }))}
                       />
                     </div>
                   </motion.div>
                 )}
 
                 {step === 6 && profile && (
-                  <motion.div
-                    key="step-6"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-6"
-                  >
+                  <motion.div key="step-6" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-6">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      Your blend, on record.
+                      {t.build.step6Title}
                     </h2>
-                    <p className="text-sm md:text-base text-brew-warm-gray">
-                      A profile written from how you&apos;re arriving to this
-                      moment. This is your Brewify batch.
-                    </p>
+                    <p className="text-sm md:text-base text-brew-warm-gray">{t.build.step6Sub}</p>
                   </motion.div>
                 )}
 
                 {isLoading && (
-                  <motion.div
-                    key="loading"
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-4"
-                  >
+                  <motion.div key="loading" variants={containerVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3, ease: "easeOut" }} className="space-y-4">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug">
-                      Designing your blend...
+                      {t.build.loadingTitle}
                     </h2>
-                    <p className="text-sm md:text-base text-brew-warm-gray">
-                      Reading the small details of your day and folding them
-                      into something warm.
-                    </p>
+                    <p className="text-sm md:text-base text-brew-warm-gray">{t.build.loadingSub}</p>
                     <div className="mt-4 h-px w-32 overflow-hidden bg-zinc-900">
                       <motion.div
                         className="h-full w-16 bg-brew-ivory"
                         animate={{ x: ["-50%", "150%"] }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1.6,
-                          ease: "easeInOut",
-                        }}
+                        transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
                       />
                     </div>
                   </motion.div>
@@ -440,9 +290,7 @@ export default function BuildPage() {
               </AnimatePresence>
             </div>
 
-            {error && (
-              <p className="text-xs text-red-400 mt-2">{error}</p>
-            )}
+            {error && <p className="text-xs text-red-400 mt-2">{error}</p>}
 
             <div className="flex items-center justify-between pt-6 text-xs md:text-sm">
               <button
@@ -451,7 +299,7 @@ export default function BuildPage() {
                 className="uppercase tracking-[0.18em] text-brew-warm-gray disabled:opacity-40 disabled:cursor-not-allowed"
                 disabled={step === 1 || isLoading}
               >
-                Back
+                {t.build.backBtn}
               </button>
               {step < 5 && (
                 <button
@@ -459,7 +307,7 @@ export default function BuildPage() {
                   onClick={goNext}
                   className="uppercase tracking-[0.18em] text-brew-ivory/90"
                 >
-                  Next
+                  {t.build.nextBtn}
                 </button>
               )}
               {step === 5 && (
@@ -469,21 +317,16 @@ export default function BuildPage() {
                   className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-6 py-2.5 text-xs md:text-sm uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isLoading}
                 >
-                  Design My Blend
+                  {t.build.designBtn}
                 </button>
               )}
               {step === 6 && (
                 <button
                   type="button"
-                  onClick={() => {
-                    setInputs(initialInputs);
-                    setProfile(null);
-                    setStep(1);
-                    setError(null);
-                  }}
+                  onClick={() => { setInputs(initialInputs); setProfile(null); setStep(1); setError(null); }}
                   className="uppercase tracking-[0.18em] text-brew-ivory/80"
                 >
-                  Start Another
+                  {t.build.startAnotherBtn}
                 </button>
               )}
             </div>
@@ -492,30 +335,16 @@ export default function BuildPage() {
           <div className="border-l border-zinc-900/80 pl-0 md:pl-10 pt-4 md:pt-0">
             {step < 6 && !profile && !isLoading && (
               <div className="space-y-4 text-sm text-brew-warm-gray">
-                <p className="uppercase text-[0.65rem] tracking-[0.25em]">
-                  Your profile
-                </p>
-                <p className="leading-relaxed">
-                  As you move through each question, we&apos;re quietly sketching
-                  the outline of a blend that should only make sense for you.
-                </p>
-                <p className="leading-relaxed">
-                  When you&apos;re finished, we&apos;ll translate that into a single
-                  label: a name, a roast, and a small story about the season
-                  you&apos;re in.
-                </p>
+                <p className="uppercase text-[0.65rem] tracking-[0.25em]">{t.build.profileTitle}</p>
+                <p className="leading-relaxed">{t.build.profileDesc1}</p>
+                <p className="leading-relaxed">{t.build.profileDesc2}</p>
               </div>
             )}
 
             {isLoading && (
               <div className="mt-8 text-sm text-brew-warm-gray">
-                <p className="uppercase text-[0.65rem] tracking-[0.25em] mb-3">
-                  In progress
-                </p>
-                <p className="leading-relaxed">
-                  Give us a few breaths. We&apos;re aligning the cup to the life
-                  you described.
-                </p>
+                <p className="uppercase text-[0.65rem] tracking-[0.25em] mb-3">{t.build.inProgressTitle}</p>
+                <p className="leading-relaxed">{t.build.inProgressDesc}</p>
               </div>
             )}
 
@@ -533,9 +362,7 @@ export default function BuildPage() {
                   size="lg"
                 />
                 <div className="text-center space-y-2">
-                  <h3 className="text-xl md:text-2xl font-medium">
-                    {profile.blendName}
-                  </h3>
+                  <h3 className="text-xl md:text-2xl font-medium">{profile.blendName}</h3>
                   <div className="flex flex-wrap justify-center gap-2">
                     {profile.flavorNotes.map((note) => (
                       <span
@@ -547,6 +374,7 @@ export default function BuildPage() {
                     ))}
                   </div>
                 </div>
+
                 {!feedSubmitted && (
                   <div className="space-y-3">
                     <label className="flex items-center gap-3 text-sm text-brew-warm-gray cursor-pointer">
@@ -556,12 +384,12 @@ export default function BuildPage() {
                         onChange={(e) => setAddToFeed(e.target.checked)}
                         className="rounded border-zinc-600 bg-transparent"
                       />
-                      Add to public feed?
+                      {t.build.addToFeedLabel}
                     </label>
                     {addToFeed && (
                       <input
                         type="text"
-                        placeholder="@instagram"
+                        placeholder={t.build.instagramPlaceholder}
                         value={feedInstagram}
                         onChange={(e) => setFeedInstagram(e.target.value)}
                         className="w-full bg-transparent border border-zinc-800/80 px-4 py-2 text-sm outline-none focus:border-brew-ivory/80 placeholder:text-zinc-600"
@@ -594,14 +422,15 @@ export default function BuildPage() {
                         }}
                         className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-4 py-2 text-[0.7rem] uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors disabled:opacity-50"
                       >
-                        {feedSubmitting ? "Adding…" : "Add to feed"}
+                        {feedSubmitting ? t.build.addingFeed : t.build.addToFeedBtn}
                       </button>
                     )}
                   </div>
                 )}
                 {feedSubmitted && (
-                  <p className="text-xs text-brew-warm-gray">Added to public feed.</p>
+                  <p className="text-xs text-brew-warm-gray">{t.build.addedFeed}</p>
                 )}
+
                 <ShareableBlendCard
                   inputs={inputs}
                   profile={profile}
@@ -611,7 +440,7 @@ export default function BuildPage() {
                   type="button"
                   className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-6 py-2.5 text-xs md:text-sm uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors"
                 >
-                  Order Your Blend
+                  {t.build.orderBlendBtn}
                 </button>
               </div>
             )}
@@ -621,4 +450,3 @@ export default function BuildPage() {
     </main>
   );
 }
-
