@@ -1,0 +1,100 @@
+[
+  {
+    "id": "feed-1772579283387",
+    "blendName": "Effervescence",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Tropical zest",
+      "Fresh ginger",
+      "Sea breeze"
+    ],
+    "emotionalDescription": "Ricco, as you blaze your own trail, let this blend be your midday spark. It whispers of faraway shores, fueling your creativity with every sip.",
+    "instagram": "@42ricco",
+    "date": "2023-10-05",
+    "batchId": "EF-19-03"
+  },
+  {
+    "id": "feed-1",
+    "blendName": "Still Water No. 7",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Brown sugar",
+      "Cedar",
+      "Quiet mornings"
+    ],
+    "emotionalDescription": "A steady, unhurried cup that sits just to the side of your thoughts. It doesn't ask for attention; it makes space for it.",
+    "instagram": "@quietmornings",
+    "date": "2025-02-28",
+    "batchId": "BW-14-07"
+  },
+  {
+    "id": "feed-2",
+    "blendName": "Meridian",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Lemon oil",
+      "Almond",
+      "Clean air"
+    ],
+    "emotionalDescription": "A bright line through the middle of your day. The moment you remember you can start again at any hour.",
+    "instagram": "@meridian",
+    "date": "2025-02-27",
+    "batchId": "MR-03-21"
+  },
+  {
+    "id": "feed-3",
+    "blendName": "First Light",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Honey",
+      "Jasmine",
+      "Morning dew"
+    ],
+    "emotionalDescription": "For the hour before the world wakes. Gentle, clear, and entirely yours.",
+    "instagram": "@earlybird",
+    "date": "2025-02-26",
+    "batchId": "FL-09-12"
+  },
+  {
+    "id": "feed-4",
+    "blendName": "Ember",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Smoke",
+      "Dark chocolate",
+      "Winter night"
+    ],
+    "emotionalDescription": "The kind of cup that holds the room when everything else has gone quiet.",
+    "instagram": "@embercoffee",
+    "date": "2025-02-25",
+    "batchId": "EM-22-01"
+  },
+  {
+    "id": "feed-5",
+    "blendName": "Drift",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Caramel",
+      "Stone fruit",
+      "Open window"
+    ],
+    "emotionalDescription": "For when you're not in a hurry. It meets you where you are and stays.",
+    "instagram": "@drift",
+    "date": "2025-02-24",
+    "batchId": "DR-11-08"
+  },
+  {
+    "id": "feed-6",
+    "blendName": "Anchor",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Molasses",
+      "Walnut",
+      "Steady ground"
+    ],
+    "emotionalDescription": "Built for the days when you need something solid under your feet before you move.",
+    "instagram": "@anchorblend",
+    "date": "2025-02-23",
+    "batchId": "AN-05-19"
+  }
+]

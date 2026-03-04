@@ -1,0 +1,52 @@
+[
+  {
+    "code": "BREW-001",
+    "redeemed": true,
+    "redeemedAt": "2026-03-03T23:05:39.734Z"
+  },
+  {
+    "code": "BREW-002",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-003",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-004",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-005",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-006",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-007",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-008",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-009",
+    "redeemed": false,
+    "redeemedAt": null
+  },
+  {
+    "code": "BREW-010",
+    "redeemed": false,
+    "redeemedAt": null
+  }
+]
