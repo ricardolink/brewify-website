@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useExt } from "@/context/LanguageContext";
 
 function Fade({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,25 +15,10 @@ function Fade({ children, className, delay = 0 }: { children: React.ReactNode; c
   );
 }
 
-const metrics = [
-  { value: "$200B+", label: "Global coffee market", sub: "One of the largest daily-habit consumer categories on earth." },
-  { value: "0", label: "True personalization players", sub: "No brand has solved per-person coffee at scale. The category is wide open." },
-  { value: "94%", label: "Retention via identity", sub: "Products tied to personal identity retain customers at rates mass brands can't reach." },
-  { value: "3×", label: "LTV vs commodity coffee", sub: "Personalized products command higher margins and longer customer relationships." },
-];
-
-const why = [
-  { title: "Category gap", body: "No brand has combined AI-personalized coffee, a creator economy layer, and Amazon-farmer direct sourcing into a single product. Brewify sits at the intersection of all three." },
-  { title: "Recurring by design", body: "Once someone builds their blend, they reorder it. The personal connection to a named, authored product creates retention that commodity subscriptions can't match." },
-  { title: "Asset-based loyalty", body: "THE 100 members don't just subscribe — they own something. A blend that earns them money. That's a fundamentally different relationship with a brand." },
-  { title: "Ethical moat", body: "The Amazon sourcing model and direct farmer payments aren't marketing copy — they're structural. Hard to copy. Easy to tell." },
-  { title: "Digital-physical bridge", body: "Every blend lives online permanently. It can be gifted, transferred, ordered by anyone. It's a physical product with digital asset mechanics." },
-  { title: "Early traction model", body: "The 100 founding members prove demand, fund the initial roasting operations, and create the community that markets the product organically." },
-];
-
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function InvestorPage() {
+  const { investor: iv } = useExt();
   const [form, setForm] = useState({ name: "", email: "", firm: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -59,22 +45,19 @@ export default function InvestorPage() {
 
   return (
     <main className="bg-brew-black text-brew-ivory">
-
       {/* HERO */}
       <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 py-24 relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,170,120,0.06) 0%, transparent 70%)" }} />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative z-10 max-w-3xl space-y-6">
-          <p className="text-[10px] uppercase tracking-[0.5em] text-brew-warm-gray">Investor Relations</p>
+          <p className="text-[10px] uppercase tracking-[0.5em] text-brew-warm-gray">{iv.eyebrow}</p>
           <h1 className="font-serif text-[clamp(2.8rem,8vw,6rem)] font-normal leading-tight">
-            The coffee industry<br />hasn't changed.<br />
-            <span className="text-brew-warm-gray italic">We're changing it.</span>
+            {iv.headline.split("\n").map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}<br />
+            <span className="text-brew-warm-gray italic">{iv.headlineItalic}</span>
           </h1>
-          <p className="text-base md:text-lg text-brew-warm-gray leading-relaxed max-w-xl mx-auto">
-            Brewify is building the first coffee brand where every product is unique, every customer is a creator, and every order supports the people who grow the beans.
-          </p>
+          <p className="text-base md:text-lg text-brew-warm-gray leading-relaxed max-w-xl mx-auto">{iv.subheadline}</p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="pt-4">
             <a href="#contact" className="inline-flex items-center justify-center rounded-full bg-brew-ivory text-brew-black px-8 py-4 text-[11px] font-medium uppercase tracking-[0.22em] hover:opacity-90 transition-opacity">
-              Request a conversation
+              {iv.cta}
             </a>
           </motion.div>
         </motion.div>
@@ -83,7 +66,7 @@ export default function InvestorPage() {
       {/* METRICS */}
       <section className="border-t border-zinc-900 py-16 md:py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto grid gap-8 grid-cols-2 md:grid-cols-4">
-          {metrics.map((m, i) => (
+          {iv.metrics.map((m, i) => (
             <Fade key={m.label} delay={i * 0.08}>
               <div className="space-y-1">
                 <p className="text-3xl md:text-4xl font-medium text-brew-ivory">{m.value}</p>
@@ -95,17 +78,17 @@ export default function InvestorPage() {
         </div>
       </section>
 
-      {/* THE OPPORTUNITY */}
+      {/* OPPORTUNITY */}
       <section className="bg-[#111] py-20 md:py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto space-y-12">
           <Fade>
             <div className="space-y-2">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">The opportunity</p>
-              <h2 className="text-2xl md:text-3xl font-medium max-w-xl">Six reasons the timing is right.</h2>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">{iv.opportunityEyebrow}</p>
+              <h2 className="text-2xl md:text-3xl font-medium max-w-xl">{iv.opportunityHeadline}</h2>
             </div>
           </Fade>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {why.map((w, i) => (
+            {iv.why.map((w, i) => (
               <Fade key={w.title} delay={i * 0.07}>
                 <div className="space-y-3 p-6 border border-zinc-800/60 rounded-xl">
                   <h3 className="text-sm font-medium text-brew-ivory">{w.title}</h3>
@@ -120,91 +103,72 @@ export default function InvestorPage() {
       {/* VISION */}
       <section className="px-6 md:px-12 lg:px-24 py-20 md:py-28 max-w-4xl mx-auto space-y-8">
         <Fade>
-          <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">The vision</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">{iv.visionEyebrow}</p>
           <h2 className="text-2xl md:text-3xl font-medium leading-snug">
-            Phase one is coffee.<br />Phase two is everything you personalize.
+            {iv.visionHeadline.split("\n").map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}
           </h2>
         </Fade>
-        <Fade delay={0.1}>
-          <p className="text-sm md:text-base text-brew-warm-gray leading-relaxed">
-            Brewify's core technology is a personalization engine that translates human context — mood, season of life, aspiration — into a physical product. Coffee is the first application because it's intimate, daily, and deeply tied to identity.
-          </p>
-        </Fade>
-        <Fade delay={0.15}>
-          <p className="text-sm md:text-base text-brew-warm-gray leading-relaxed">
-            The longer-term thesis is a platform: any product category where personal context changes what someone would want. Tea. Supplements. Fragrance. The infrastructure being built for coffee applies everywhere.
-          </p>
-        </Fade>
-        <Fade delay={0.2}>
-          <p className="text-sm md:text-base text-brew-ivory leading-relaxed font-medium">
-            We're not selling bags of coffee. We're building infrastructure for personalized physical goods — starting where the emotional attachment is deepest.
-          </p>
-        </Fade>
+        <Fade delay={0.1}><p className="text-sm md:text-base text-brew-warm-gray leading-relaxed">{iv.visionP1}</p></Fade>
+        <Fade delay={0.15}><p className="text-sm md:text-base text-brew-warm-gray leading-relaxed">{iv.visionP2}</p></Fade>
+        <Fade delay={0.2}><p className="text-sm md:text-base text-brew-ivory leading-relaxed font-medium">{iv.visionP3}</p></Fade>
       </section>
 
-      {/* CONTACT FORM */}
+      {/* CONTACT */}
       <section id="contact" className="border-t border-zinc-900 py-20 px-6 md:px-12 lg:px-24 bg-[#0d0d0d]">
         <div className="max-w-5xl mx-auto grid gap-14 md:grid-cols-[1fr_1.5fr] items-start">
           <Fade className="space-y-6 md:sticky md:top-28">
             <div className="space-y-3">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">Get in touch</p>
-              <h2 className="text-2xl md:text-3xl font-medium">Interested in investing?</h2>
-              <p className="text-sm text-brew-warm-gray leading-relaxed">
-                We're having early conversations with investors who understand brand, community, and the consumer goods space. If that's you, we'd like to talk.
-              </p>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">{iv.contactEyebrow}</p>
+              <h2 className="text-2xl md:text-3xl font-medium">{iv.contactHeadline}</h2>
+              <p className="text-sm text-brew-warm-gray leading-relaxed">{iv.contactSub}</p>
             </div>
             <div className="space-y-1">
-              <p className="text-[9px] uppercase tracking-[0.3em] text-zinc-600">Direct email</p>
-              <a href="mailto:iam@brewifycoffee.com" className="text-sm text-brew-ivory hover:text-brew-warm-gray transition-colors">
-                iam@brewifycoffee.com
-              </a>
+              <p className="text-[9px] uppercase tracking-[0.3em] text-zinc-600">{iv.contactEmailLabel}</p>
+              <a href="mailto:iam@brewifycoffee.com" className="text-sm text-brew-ivory hover:text-brew-warm-gray transition-colors">iam@brewifycoffee.com</a>
             </div>
           </Fade>
-
           <Fade delay={0.1}>
             {status === "success" ? (
               <div className="border border-zinc-800/80 rounded-2xl p-10 text-center space-y-4">
                 <p className="text-2xl">✓</p>
-                <h3 className="text-xl font-medium">Message received.</h3>
-                <p className="text-sm text-brew-warm-gray">We'll follow up within 48 hours.</p>
+                <h3 className="text-xl font-medium">{iv.successTitle}</h3>
+                <p className="text-sm text-brew-warm-gray">{iv.successSub}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">Name</label>
-                    <input type="text" required value={form.name} onChange={set("name")} placeholder="Your name"
+                    <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">{iv.nameLabel}</label>
+                    <input type="text" required value={form.name} onChange={set("name")} placeholder={iv.namePlaceholder}
                       className="w-full bg-transparent border border-zinc-800 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-600 rounded-lg" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">Email</label>
-                    <input type="email" required value={form.email} onChange={set("email")} placeholder="you@firm.com"
+                    <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">{iv.emailLabel}</label>
+                    <input type="email" required value={form.email} onChange={set("email")} placeholder={iv.emailPlaceholder}
                       className="w-full bg-transparent border border-zinc-800 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-600 rounded-lg" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">Firm / Organization <span className="text-zinc-600 normal-case tracking-normal">(optional)</span></label>
-                  <input type="text" value={form.firm} onChange={set("firm")} placeholder="Fund name or company"
+                  <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">{iv.firmLabel} <span className="text-zinc-600 normal-case tracking-normal">{iv.firmOptional}</span></label>
+                  <input type="text" value={form.firm} onChange={set("firm")} placeholder={iv.firmPlaceholder}
                     className="w-full bg-transparent border border-zinc-800 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-600 rounded-lg" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">Message</label>
-                  <textarea required rows={5} value={form.message} onChange={set("message")}
-                    placeholder="Tell us about your investment thesis and what draws you to Brewify..."
+                  <label className="text-[9px] uppercase tracking-[0.3em] text-brew-warm-gray">{iv.messageLabel}</label>
+                  <textarea required rows={5} value={form.message} onChange={set("message")} placeholder={iv.messagePlaceholder}
                     className="w-full bg-transparent border border-zinc-800 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-600 rounded-lg resize-none" />
                 </div>
                 {errorMsg && <p className="text-xs text-red-400">{errorMsg}</p>}
                 <button type="submit" disabled={status === "loading"}
                   className="w-full inline-flex items-center justify-center rounded-full bg-brew-ivory text-brew-black px-6 py-4 text-[11px] font-medium uppercase tracking-[0.22em] hover:opacity-90 transition-opacity disabled:opacity-50">
-                  {status === "loading" ? "Sending…" : "Send inquiry"}
+                  {status === "loading" ? iv.sending : iv.sendBtn}
                 </button>
-                <p className="text-[10px] text-zinc-600 text-center">We respond to all serious inquiries within 48 hours.</p>
+                <p className="text-[10px] text-zinc-600 text-center">{iv.responseNote}</p>
               </form>
             )}
           </Fade>
         </div>
       </section>
-
     </main>
   );
 }
