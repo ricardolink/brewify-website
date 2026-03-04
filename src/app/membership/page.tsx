@@ -19,10 +19,11 @@ export default function MembershipPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-brew-black text-brew-ivory px-6 py-16 md:px-12 lg:px-24">
-      <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
-        <header className="text-center space-y-4">
-          <p className="text-xs uppercase tracking-[0.22em] text-brew-warm-gray">
+    <main className="min-h-screen bg-brew-black text-brew-ivory px-6 py-20 md:px-12 lg:px-24 flex items-center justify-center">
+      <div className="max-w-lg w-full space-y-10">
+
+        <header className="space-y-3">
+          <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">
             {t.membership.eyebrow}
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium">
@@ -30,64 +31,62 @@ export default function MembershipPage() {
           </h1>
         </header>
 
-        <section className="grid gap-8 md:grid-cols-2">
-          {/* Reserve */}
-          <div className="border border-zinc-800/80 rounded-lg p-6 md:p-8 flex flex-col">
-            <p className="text-xs uppercase tracking-[0.2em] text-brew-warm-gray mb-2">
+        <div className="border border-zinc-800/80 rounded-2xl p-8 md:p-10 space-y-8">
+          {/* Label */}
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-brew-warm-gray">
               {t.membership.oneTime}
             </p>
-            <h2 className="text-xl md:text-2xl font-medium mb-1">
-              {t.membership.reserveTitle}
-            </h2>
-            <p className="text-2xl md:text-3xl font-medium text-brew-ivory mb-6">
-              {t.membership.reservePrice}{" "}
-              <span className="text-sm font-normal text-brew-warm-gray">
-                {t.membership.reserveSubtitle}
-              </span>
-            </p>
-            <ul className="text-sm text-brew-ivory/85 space-y-2 mb-8 flex-1">
-              {t.membership.reserveFeatures.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-            <p className="text-xs uppercase tracking-[0.18em] text-brew-warm-gray mb-4">
-              {t.membership.spotsRemaining(spotsRemaining)}
-            </p>
-            <Link
-              href="/checkout/reserve"
-              className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-6 py-3 text-xs uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors"
-            >
-              {t.membership.comingSoon}
-            </Link>
+            <h2 className="text-2xl md:text-3xl font-medium">{t.membership.reserveTitle}</h2>
           </div>
 
-          {/* Curator */}
-          <div className="border border-zinc-800/80 rounded-lg p-6 md:p-8 flex flex-col">
-            <p className="text-xs uppercase tracking-[0.2em] text-brew-warm-gray mb-2">
-              {t.membership.monthly}
-            </p>
-            <h2 className="text-xl md:text-2xl font-medium mb-1">
-              {t.membership.curatorTitle}
-            </h2>
-            <p className="text-2xl md:text-3xl font-medium text-brew-ivory mb-6">
-              {t.membership.curatorPrice}{" "}
-              <span className="text-sm font-normal text-brew-warm-gray">
-                {t.membership.curatorPer}
-              </span>
-            </p>
-            <ul className="text-sm text-brew-ivory/85 space-y-2 mb-8 flex-1">
-              {t.membership.curatorFeatures.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-            <Link
-              href="/checkout/curator"
-              className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-6 py-3 text-xs uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors"
-            >
-              {t.membership.comingSoon}
-            </Link>
+          {/* Price */}
+          <div className="flex items-end gap-2">
+            <span className="text-4xl md:text-5xl font-medium text-brew-ivory">
+              {t.membership.reservePrice}
+            </span>
+            <span className="text-sm text-brew-warm-gray pb-1">
+              {t.membership.reserveSubtitle}
+            </span>
           </div>
-        </section>
+
+          {/* Features */}
+          <ul className="space-y-3">
+            {t.membership.reserveFeatures.map((f) => (
+              <li key={f} className="flex items-start gap-3 text-sm text-brew-ivory/85">
+                <span className="text-brew-warm-gray mt-0.5">—</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Spots */}
+          <div className="space-y-4 border-t border-zinc-800/60 pt-6">
+            <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em]">
+              <span className="text-brew-warm-gray">{t.membership.spotsRemaining(spotsRemaining)}</span>
+              <span className="text-brew-warm-gray">{100 - spotsRemaining} / 100 claimed</span>
+            </div>
+            {/* Progress bar */}
+            <div className="h-1 bg-zinc-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-brew-ivory/80 rounded-full transition-all duration-700"
+                style={{ width: `${((100 - spotsRemaining) / 100) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          {/* CTA */}
+          <Link
+            href="/checkout/reserve"
+            className="inline-flex items-center justify-center w-full rounded-full bg-brew-ivory text-brew-black px-6 py-4 text-[11px] font-medium uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
+          >
+            {t.membership.comingSoon}
+          </Link>
+        </div>
+
+        <p className="text-xs text-brew-warm-gray text-center">
+          One-time payment · Lifetime access · Never restocked
+        </p>
       </div>
     </main>
   );

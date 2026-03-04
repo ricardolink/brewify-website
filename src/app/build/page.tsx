@@ -140,7 +140,7 @@ function BuildGate({ spotsRemaining }: { spotsRemaining: number }) {
             href="/membership"
             className="inline-flex items-center justify-center rounded-full bg-brew-ivory text-brew-black px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:opacity-90 transition-opacity w-full mt-2"
           >
-            Claim your spot — $49
+            Claim your spot — $189.90
           </Link>
           <p className="text-[10px] text-brew-warm-gray text-center">
             {spotsRemaining} spots left · never restocked
