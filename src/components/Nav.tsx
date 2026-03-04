@@ -52,11 +52,18 @@ export function Nav() {
             </>
           ) : (
             <>
-              <Link href="/membership" className={linkClass}>
-                {t.nav.membership}
+              {/* Build visible to all — gate page handles locking */}
+              <Link href="/build" className={`${linkClass} opacity-60 hover:opacity-100`}>
+                {t.nav.build}
               </Link>
               <Link href="/the-100" className={linkClass}>
                 {t.nav.the100}
+              </Link>
+              <Link href="/feed" className={linkClass}>
+                {t.nav.feed}
+              </Link>
+              <Link href="/membership" className={linkClass}>
+                {t.nav.membership}
               </Link>
               <Link href="/store" className={linkClass}>
                 {t.nav.store}

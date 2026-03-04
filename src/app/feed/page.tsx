@@ -11,11 +11,11 @@ export default function FeedPage() {
   const { t } = useLanguage();
   const [blends, setBlends] = useState<FeedBlend[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasAccess, setHasAccess] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !window.localStorage.getItem(BREWIFY_ACCESS_KEY)) {
-      window.location.href = "/";
-      return;
+    if (typeof window !== "undefined") {
+      setHasAccess(!!window.localStorage.getItem(BREWIFY_ACCESS_KEY));
     }
     fetch("/api/feed")
       .then((res) => res.json())
@@ -82,12 +82,14 @@ export default function FeedPage() {
                     <span className="px-3 py-1 text-[10px] uppercase tracking-[0.18em] border border-brew-warm-gray rounded-full text-brew-warm-gray">
                       {featured.roastLevel}
                     </span>
-                    <a
-                      href={`/blend/${featured.batchId}`}
-                      className="text-xs underline underline-offset-4 text-brew-ivory hover:text-brew-ivory/80"
-                    >
-                      {t.feed.orderBtn}
-                    </a>
+                    {hasAccess && (
+                      <a
+                        href={`/blend/${featured.batchId}`}
+                        className="text-xs underline underline-offset-4 text-brew-ivory hover:text-brew-ivory/80"
+                      >
+                        {t.feed.orderBtn}
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
@@ -123,12 +125,14 @@ export default function FeedPage() {
                         {blend.roastLevel}
                       </span>
                     </div>
-                    <a
-                      href={`/blend/${blend.batchId}`}
-                      className="mt-2 inline-block text-[11px] underline underline-offset-4 text-brew-ivory hover:text-brew-ivory/80"
-                    >
-                      {t.feed.orderBtn}
-                    </a>
+                    {hasAccess && (
+                      <a
+                        href={`/blend/${blend.batchId}`}
+                        className="mt-2 inline-block text-[11px] underline underline-offset-4 text-brew-ivory hover:text-brew-ivory/80"
+                      >
+                        {t.feed.orderBtn}
+                      </a>
+                    )}
                   </div>
                 </article>
               ))}
