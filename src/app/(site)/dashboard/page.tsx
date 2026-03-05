@@ -350,7 +350,7 @@ export default function DashboardPage() {
         {redeemType && <RedeemModal type={redeemType} onClose={() => setRedeemType(null)} />}
       </AnimatePresence>
 
-      <main className="min-h-screen bg-brew-black text-brew-ivory px-6 py-10 md:px-12 lg:px-20">
+      <main className="min-h-screen bg-brew-black text-brew-ivory px-6 pt-28 pb-16 md:px-12 lg:px-20">
         <div className="max-w-5xl mx-auto space-y-12">
 
           {/* ── Profile header ────────────────────────────────────────── */}
