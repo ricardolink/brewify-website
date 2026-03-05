@@ -1,289 +1,250 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
 
-type Status = "idle" | "loading" | "success" | "error";
+export default function ComingSoonPage() {
+  const [email, setEmail] = useState("");
+  const [joinStatus, setJoinStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [logoClicks, setLogoClicks] = useState(0);
+  const [showUnlock, setShowUnlock] = useState(false);
+  const [unlockKey, setUnlockKey] = useState("");
+  const [unlockError, setUnlockError] = useState("");
+  const [unlockLoading, setUnlockLoading] = useState(false);
 
-export default function Home() {
-  const router = useRouter();
-  const { t } = useLanguage();
-
-  const [waitlistEmail, setWaitlistEmail] = useState("");
-  const [waitlistStatus, setWaitlistStatus] = useState<Status>("idle");
-  const [waitlistMessage, setWaitlistMessage] = useState("");
-
-  const [showInvite, setShowInvite] = useState(false);
-  const [inviteCode, setInviteCode] = useState("");
-  const [inviteStatus, setInviteStatus] = useState<Status>("idle");
-  const [inviteMessage, setInviteMessage] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#invite") {
-      setShowInvite(true);
-    }
-  }, []);
-
-  const handleWaitlist = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setWaitlistStatus("loading");
-    setWaitlistMessage("");
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: waitlistEmail }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setWaitlistStatus("error");
-        setWaitlistMessage(data.error ?? t.home.somethingWrong);
-        return;
-      }
-      setWaitlistStatus("success");
-      setWaitlistMessage(t.home.waitlistSuccess);
-      setWaitlistEmail("");
-    } catch {
-      setWaitlistStatus("error");
-      setWaitlistMessage(t.home.somethingWrong);
+  const handleLogoClick = () => {
+    const next = logoClicks + 1;
+    setLogoClicks(next);
+    if (next >= 5) {
+      setShowUnlock(true);
+      setLogoClicks(0);
     }
   };
 
-  const handleRedeemInvite = async (e: React.FormEvent) => {
+  const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
-    setInviteStatus("loading");
-    setInviteMessage("");
-    try {
-      const res = await fetch("/api/redeem-invite", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: inviteCode.trim() }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setInviteStatus("error");
-        setInviteMessage(data.error ?? t.home.invalidCode);
-        return;
-      }
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem("brewify_access", "true");
-      }
-      setInviteStatus("success");
-      setInviteMessage(t.home.accessGranted);
-      setTimeout(() => router.push("/build"), 700);
-    } catch {
-      setInviteStatus("error");
-      setInviteMessage(t.home.somethingWrong);
+    setJoinStatus("loading");
+    await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "Waitlist",
+        email,
+        subject: "Waitlist Signup",
+        message: `New waitlist signup: ${email}`,
+      }),
+    });
+    setJoinStatus("success");
+  };
+
+  const handleUnlock = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUnlockLoading(true);
+    setUnlockError("");
+    const res = await fetch("/api/unlock", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: unlockKey }),
+    });
+    if (res.ok) {
+      window.location.href = "/the-100";
+    } else {
+      setUnlockError("Wrong key. Try again.");
+      setUnlockLoading(false);
     }
   };
 
   return (
-    <main className="text-brew-ivory">
-      {/* Hero — full viewport, radial gradient, centered */}
-      <section
-        className="min-h-[100svh] flex flex-col items-center justify-center px-6 pt-20 pb-20 relative"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(60,40,20,0.25) 0%, transparent 60%), #0a0a0a",
-        }}
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f5f2ee] flex flex-col items-center justify-center relative overflow-hidden px-6">
+
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(195,155,80,0.05) 0%, transparent 70%)"
+      }} />
+
+      {/* Grain texture */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.035] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        <filter id="grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain)" />
+      </svg>
+
+      {/* Corner dots */}
+      {["top-8 left-8", "top-8 right-8", "bottom-8 left-8", "bottom-8 right-8"].map((pos) => (
+        <span key={pos} className={`absolute ${pos} w-1 h-1 rounded-full bg-[#a09a94] opacity-20`} />
+      ))}
+
+      {/* Wordmark — click 5× to reveal admin unlock */}
+      <motion.button
+        onClick={handleLogoClick}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="absolute top-10 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.55em] text-[#a09a94] opacity-40 hover:opacity-60 transition-opacity select-none"
+        style={{ paddingRight: "0.55em" }}
       >
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-[11px] uppercase tracking-[0.3em] text-brew-warm-gray"
-          >
-            {t.home.eyebrow}
-          </motion.p>
+        Brewify Coffee
+      </motion.button>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-6 font-serif text-[clamp(2.5rem,8vw,6rem)] font-normal leading-tight text-brew-ivory"
-          >
-            {t.home.headline}
-          </motion.h1>
+      {/* Main content */}
+      <div className="relative z-10 text-center max-w-xl space-y-12">
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-base italic text-brew-warm-gray"
-          >
-            {t.home.subheadline}
-          </motion.p>
+        {/* Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="space-y-2"
+        >
+          <p className="text-[11px] uppercase tracking-[0.5em] text-[#a09a94] mb-6" style={{ paddingRight: "0.5em" }}>
+            Opening soon
+          </p>
+          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.95] tracking-tight text-[#f5f2ee]">
+            Something is<br />
+            <em className="text-[#c8a45a] not-italic">brewing.</em>
+          </h1>
+        </motion.div>
 
+        {/* Divider */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+          className="w-12 h-px bg-[#a09a94] opacity-30 mx-auto"
+        />
+
+        {/* Body copy */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-sm md:text-base text-[#a09a94] leading-relaxed max-w-sm mx-auto"
+        >
+          The world's first fully personalized coffee. Built from who you are — not selected for you. 100 spots. Invitation only.
+        </motion.p>
+
+        {/* Waitlist form */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
+        >
+          {joinStatus === "success" ? (
+            <div className="space-y-2">
+              <p className="text-[#c8a45a] text-sm tracking-wide">You're on the list.</p>
+              <p className="text-[10px] text-[#a09a94] tracking-widest uppercase">We'll reach out when the doors open.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleWaitlist} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="flex-1 bg-transparent border border-[#2a2a2a] focus:border-[#a09a94]/50 outline-none px-4 py-3 text-sm text-[#f5f2ee] placeholder:text-[#3a3a3a] rounded-full transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={joinStatus === "loading"}
+                className="whitespace-nowrap rounded-full bg-[#f5f2ee] text-[#0a0a0a] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.25em] hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {joinStatus === "loading" ? "…" : "Join waitlist"}
+              </button>
+            </form>
+          )}
+        </motion.div>
+
+        {/* Early access CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.85 }}
+          className="space-y-3"
+        >
+          <Link
+            href="/the-100"
+            className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-[#a09a94] hover:text-[#f5f2ee] transition-colors group"
+            style={{ paddingRight: "0.3em" }}
+          >
+            <span>Explore THE 100</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Bottom social */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6"
+      >
+        <a
+          href="https://instagram.com/brewifycoffee"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-[#a09a94] opacity-50 hover:opacity-80 transition-opacity"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          @brewifycoffee
+        </a>
+      </motion.div>
+
+      {/* Admin unlock modal */}
+      <AnimatePresence>
+        {showUnlock && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10 flex flex-col items-center gap-6"
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0a]/90 backdrop-blur-sm px-6"
           >
-            <Link
-              href="/build"
-              className="inline-flex items-center justify-center rounded-full border border-brew-ivory px-8 py-3.5 text-[11px] font-medium uppercase tracking-[0.2em] text-brew-ivory hover:bg-brew-ivory hover:text-brew-black transition-colors"
-            >
-              {t.home.cta}
-            </Link>
-
-            <p className="text-sm text-brew-warm-gray">
-              {t.home.alreadyHaveInvite}{" "}
-              <button
-                type="button"
-                onClick={() => setShowInvite(true)}
-                className="underline underline-offset-2 hover:text-brew-ivory transition-colors"
-              >
-                {t.home.enterCode}
-              </button>
-            </p>
-          </motion.div>
-
-          {showInvite && (
             <motion.div
-              id="invite"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              className="mt-8 w-full max-w-sm text-left"
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.97 }}
+              className="w-full max-w-sm space-y-6"
             >
-              <div className="border border-zinc-700/80 rounded-xl p-5 bg-black/20">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-brew-warm-gray mb-3">
-                  {t.home.inviteLabel}
-                </p>
-                <form onSubmit={handleRedeemInvite} className="space-y-3">
-                  <input
-                    type="text"
-                    placeholder={t.home.invitePlaceholder}
-                    value={inviteCode}
-                    onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
-                    className="w-full bg-transparent border border-zinc-700 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-500"
-                  />
-                  <div className="flex gap-2">
-                    <button
-                      type="submit"
-                      disabled={inviteStatus === "loading"}
-                      className="flex-1 rounded-full border border-brew-ivory px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors disabled:opacity-50"
-                    >
-                      {inviteStatus === "loading"
-                        ? t.home.redeeming
-                        : t.home.redeemBtn}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setShowInvite(false)}
-                      className="rounded-full border border-zinc-600 px-4 py-2.5 text-[11px] uppercase tracking-[0.18em] text-brew-warm-gray hover:text-brew-ivory transition-colors"
-                    >
-                      {t.home.cancelBtn}
-                    </button>
-                  </div>
-                  {inviteMessage && (
-                    <p
-                      className={`text-sm ${
-                        inviteStatus === "error"
-                          ? "text-red-400"
-                          : "text-brew-warm-gray"
-                      }`}
-                    >
-                      {inviteMessage}
-                    </p>
-                  )}
-                </form>
+              <div className="space-y-1 text-center">
+                <p className="text-[9px] uppercase tracking-[0.5em] text-[#a09a94]">Admin access</p>
+                <p className="text-sm text-[#f5f2ee]">Enter your access key</p>
               </div>
-            </motion.div>
-          )}
-        </div>
-      </section>
-
-      {/* Feature bar — dark charcoal strip */}
-      <section
-        className="border-t border-zinc-800/80 min-h-[200px] flex items-center"
-        style={{ background: "#111111" }}
-      >
-        <div className="w-full max-w-6xl mx-auto px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-center">
-          <div className="space-y-2">
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-brew-ivory">
-              {t.home.feature1Title}
-            </p>
-            <p className="text-sm text-brew-warm-gray max-w-xs mx-auto leading-relaxed">
-              {t.home.feature1Desc}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-brew-ivory">
-              {t.home.feature2Title}
-            </p>
-            <p className="text-sm text-brew-warm-gray max-w-xs mx-auto leading-relaxed">
-              {t.home.feature2Desc}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-brew-ivory">
-              {t.home.feature3Title}
-            </p>
-            <p className="text-sm text-brew-warm-gray max-w-xs mx-auto leading-relaxed">
-              {t.home.feature3Desc}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Waitlist */}
-      <section className="px-6 py-16 md:px-12 lg:px-24 border-t border-zinc-800/80 bg-brew-black">
-        <div className="max-w-2xl mx-auto grid gap-8 md:grid-cols-[1fr_1fr] items-start">
-          <div className="space-y-2">
-            <h2 className="text-xl md:text-2xl font-medium text-brew-ivory">
-              {t.home.waitlistTitle}
-            </h2>
-            <p className="text-sm text-brew-warm-gray">
-              {t.home.waitlistSub}
-            </p>
-          </div>
-          <form onSubmit={handleWaitlist} className="space-y-3">
-            <input
-              type="email"
-              placeholder={t.home.waitlistPlaceholder}
-              value={waitlistEmail}
-              onChange={(e) => setWaitlistEmail(e.target.value)}
-              className="w-full bg-transparent border border-zinc-700 px-4 py-3 text-sm outline-none focus:border-brew-ivory/60 placeholder:text-zinc-500"
-              required
-            />
-            <button
-              type="submit"
-              disabled={waitlistStatus === "loading"}
-              className="w-full rounded-full border border-brew-ivory px-6 py-3 text-[11px] uppercase tracking-[0.18em] hover:bg-brew-ivory hover:text-brew-black transition-colors disabled:opacity-50"
-            >
-              {waitlistStatus === "loading"
-                ? t.home.waitlistJoining
-                : t.home.waitlistBtn}
-            </button>
-            {waitlistMessage && (
-              <p
-                className={`text-sm ${
-                  waitlistStatus === "error"
-                    ? "text-red-400"
-                    : "text-brew-warm-gray"
-                }`}
+              <form onSubmit={handleUnlock} className="space-y-3">
+                <input
+                  type="password"
+                  autoFocus
+                  value={unlockKey}
+                  onChange={(e) => setUnlockKey(e.target.value)}
+                  placeholder="••••••••••••"
+                  className="w-full bg-transparent border border-[#2a2a2a] focus:border-[#a09a94]/50 outline-none px-4 py-3 text-sm text-[#f5f2ee] placeholder:text-[#3a3a3a] rounded-lg text-center tracking-widest transition-colors"
+                />
+                {unlockError && (
+                  <p className="text-[10px] text-red-400 text-center">{unlockError}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={unlockLoading}
+                  className="w-full rounded-full bg-[#f5f2ee] text-[#0a0a0a] py-3 text-[11px] font-medium uppercase tracking-[0.25em] hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {unlockLoading ? "…" : "Unlock"}
+                </button>
+              </form>
+              <button
+                onClick={() => { setShowUnlock(false); setUnlockKey(""); setUnlockError(""); }}
+                className="w-full text-[10px] text-[#a09a94] hover:text-[#f5f2ee] transition-colors tracking-widest uppercase"
               >
-                {waitlistMessage}
-              </p>
-            )}
-          </form>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 py-8 border-t border-zinc-800/80 bg-brew-black">
-        <div className="max-w-6xl mx-auto text-center space-y-4">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-brew-warm-gray">
-            {t.footer.tagline}
-          </p>
-          <p className="text-xs text-brew-warm-gray/80">{t.footer.domain}</p>
-        </div>
-      </footer>
+                Cancel
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

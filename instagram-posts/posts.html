@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a1a; display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; font-family: 'Georgia', serif; }
+
+  .post {
+    width: 1080px;
+    height: 1080px;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* subtle grain texture overlay */
+  .post::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .post > * { position: relative; z-index: 2; }
+
+  .wordmark {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #f5f2ee;
+    opacity: 0.35;
+  }
+
+  .handle {
+    position: absolute;
+    bottom: 52px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: #a09a94;
+    opacity: 0.6;
+  }
+
+  /* ── POST 1 ── */
+  .p1 .body {
+    text-align: center;
+    padding: 0 120px;
+  }
+  .p1 .line {
+    display: block;
+    font-family: 'Georgia', serif;
+    font-size: 64px;
+    font-weight: normal;
+    color: #f5f2ee;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .p1 .line.dim { color: #a09a94; }
+
+  /* ── POST 2 ── */
+  .p2 .body {
+    text-align: center;
+    padding: 0 100px;
+    space: 20px;
+  }
+  .p2 .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #a09a94;
+    margin-bottom: 40px;
+    display: block;
+  }
+  .p2 .headline {
+    font-family: 'Georgia', serif;
+    font-size: 72px;
+    font-weight: normal;
+    color: #f5f2ee;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .p2 .headline em { color: #a09a94; font-style: italic; }
+  .p2 .sub {
+    display: block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: #a09a94;
+    margin-top: 36px;
+  }
+
+  /* ── POST 3 ── */
+  .p3 .body {
+    text-align: center;
+    padding: 0 80px;
+  }
+  .p3 .number {
+    font-family: 'Georgia', serif;
+    font-size: 200px;
+    color: #f5f2ee;
+    line-height: 1;
+    opacity: 0.06;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+  }
+  .p3 .text {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #a09a94;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .p3 .main {
+    font-family: 'Georgia', serif;
+    font-size: 58px;
+    color: #f5f2ee;
+    line-height: 1.2;
+    font-weight: normal;
+  }
+
+  /* ── POST 4 ── */
+  .p4 .body {
+    text-align: center;
+    padding: 0 100px;
+  }
+  .p4 .question {
+    font-family: 'Georgia', serif;
+    font-size: 62px;
+    color: #f5f2ee;
+    line-height: 1.2;
+    font-weight: normal;
+    letter-spacing: -0.01em;
+  }
+  .p4 .question em { color: #a09a94; font-style: italic; }
+  .p4 .divider {
+    width: 40px;
+    height: 1px;
+    background: #a09a94;
+    margin: 44px auto;
+    opacity: 0.4;
+  }
+  .p4 .answer {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #a09a94;
+  }
+
+  /* ── POST 5 ── */
+  .p5 .body {
+    text-align: center;
+    padding: 0 80px;
+  }
+  .p5 .soon {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: #a09a94;
+    margin-bottom: 40px;
+    display: block;
+  }
+  .p5 .big {
+    font-family: 'Georgia', serif;
+    font-size: 90px;
+    color: #f5f2ee;
+    line-height: 1.05;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+  }
+  .p5 .url {
+    display: block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: #a09a94;
+    margin-top: 44px;
+    text-transform: lowercase;
+  }
+  .p5 .pill {
+    display: inline-block;
+    margin-top: 32px;
+    border: 1px solid #a09a94;
+    border-radius: 100px;
+    padding: 10px 32px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #f5f2ee;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<!-- POST 1 -->
+<div class="post p1" id="post1">
+  <span class="wordmark">Brewify Coffee</span>
+  <div class="body">
+    <span class="line">Coffee has never</span>
+    <span class="line">been <em style="font-style:italic;color:#a09a94">yours.</em></span>
+    <br>
+    <span class="line" style="font-size:36px;color:#a09a94;margin-top:24px;display:block;letter-spacing:0.04em">Until now.</span>
+  </div>
+  <span class="handle">@brewifycoffee</span>
+</div>
+
+<!-- POST 2 -->
+<div class="post p2" id="post2">
+  <span class="wordmark">Brewify Coffee</span>
+  <div class="body">
+    <span class="eyebrow">Introducing</span>
+    <h2 class="headline">100 people.<br><em>100 blends.</em><br>No two the same.</h2>
+    <span class="sub">The first truly personal coffee — built for you, owned by you.</span>
+  </div>
+  <span class="handle">@brewifycoffee</span>
+</div>
+
+<!-- POST 3 -->
+<div class="post p3" id="post3">
+  <span class="wordmark">Brewify Coffee</span>
+  <div class="body">
+    <span class="number">100</span>
+    <span class="text">Only 100 spots. Ever.</span>
+    <p class="main">Your blend.<br>Your name on it.<br>Yours permanently.</p>
+  </div>
+  <span class="handle">@brewifycoffee</span>
+</div>
+
+<!-- POST 4 -->
+<div class="post p4" id="post4">
+  <span class="wordmark">Brewify Coffee</span>
+  <div class="body">
+    <p class="question">What if your<br>coffee <em>knew</em><br>who you were?</p>
+    <div class="divider"></div>
+    <span class="answer">Something new is coming</span>
+  </div>
+  <span class="handle">@brewifycoffee</span>
+</div>
+
+<!-- POST 5 -->
+<div class="post p5" id="post5">
+  <span class="wordmark">Brewify Coffee</span>
+  <div class="body">
+    <span class="soon">Coming soon</span>
+    <h2 class="big">The waitlist<br>opens soon.</h2>
+    <span class="url">brewifycoffee.com</span>
+    <span class="pill">Be among the first 100</span>
+  </div>
+  <span class="handle">@brewifycoffee</span>
+</div>
+
+</body>
+</html>

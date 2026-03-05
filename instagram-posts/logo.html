@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 800px; height: 800px; overflow: hidden; }
+
+  .wrap {
+    width: 800px;
+    height: 800px;
+    background: #111110;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* warm glow behind the B */
+  .glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(195,155,80,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* thick circle border — readable at 110px */
+  .ring {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    border: 3px solid rgba(245, 240, 230, 0.12);
+  }
+
+  .monogram {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 420px;
+    font-weight: normal;
+    color: #f5f0e8;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 2;
+    margin-top: 40px; /* optical center serif baseline */
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="glow"></div>
+  <div class="ring"></div>
+  <span class="monogram">B</span>
+</div>
+</body>
+</html>
