@@ -12,7 +12,7 @@ function SmokeWisp({
   driftX,
 }: {
   delay: number;
-  x: number;    // horizontal offset from center (%)
+  x: number;
   width: number;
   duration: number;
   driftX: number;
@@ -21,40 +21,42 @@ function SmokeWisp({
     <motion.div
       className="absolute pointer-events-none"
       style={{
-        bottom: "52%",
-        left: `calc(50% + ${x}px)`,
+        bottom: 0,
+        left: `calc(50% + ${x}px - ${width / 2}px)`,
         width,
-        height: width * 2.5,
-        borderRadius: "50%",
+        height: width * 3.5,
+        borderRadius: "50% 50% 30% 30%",
         background:
-          "radial-gradient(ellipse at bottom, rgba(245,242,238,0.12) 0%, rgba(245,242,238,0.04) 50%, transparent 80%)",
-        filter: `blur(${width * 0.35}px)`,
+          "radial-gradient(ellipse at bottom, rgba(245,242,238,0.28) 0%, rgba(245,242,238,0.10) 40%, transparent 80%)",
+        filter: `blur(${width * 0.45}px)`,
         transformOrigin: "bottom center",
       }}
       animate={{
-        y: [0, -260],
-        opacity: [0, 0.55, 0.3, 0],
-        scaleX: [0.6, 1, 1.5, 2],
-        x: [0, driftX * 0.3, driftX * 0.7, driftX],
+        y: [0, -320],
+        opacity: [0, 0.85, 0.55, 0],
+        scaleX: [0.5, 0.9, 1.6, 2.4],
+        x: [0, driftX * 0.25, driftX * 0.65, driftX],
       }}
       transition={{
         duration,
         repeat: Infinity,
         delay,
-        ease: "easeOut",
-        times: [0, 0.3, 0.7, 1],
+        ease: [0.2, 0.0, 0.6, 1.0],
+        times: [0, 0.25, 0.65, 1],
       }}
     />
   );
 }
 
 const WISPS = [
-  { delay: 0,    x: -30, width: 28, duration: 5.5, driftX: -18 },
-  { delay: 1.1,  x:   0, width: 36, duration: 6.2, driftX:  12 },
-  { delay: 2.3,  x:  28, width: 22, duration: 5.0, driftX:  20 },
-  { delay: 0.6,  x: -14, width: 18, duration: 4.8, driftX: -24 },
-  { delay: 1.8,  x:  14, width: 30, duration: 6.8, driftX:  -8 },
-  { delay: 3.2,  x:  -4, width: 14, duration: 4.4, driftX:  16 },
+  { delay: 0,   x: -38, width: 32, duration: 7.5, driftX: -28 },
+  { delay: 1.0, x:  -8, width: 44, duration: 8.5, driftX:  18 },
+  { delay: 2.2, x:  24, width: 28, duration: 7.0, driftX:  32 },
+  { delay: 0.5, x: -22, width: 20, duration: 6.5, driftX: -36 },
+  { delay: 1.7, x:  10, width: 38, duration: 9.0, driftX: -14 },
+  { delay: 3.0, x:  40, width: 24, duration: 7.8, driftX:  24 },
+  { delay: 1.3, x:  -2, width: 16, duration: 6.2, driftX:  -8 },
+  { delay: 2.8, x: -50, width: 22, duration: 8.2, driftX: -20 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -139,10 +141,7 @@ export default function ComingSoonPage() {
         <span key={pos} className={`absolute ${pos} w-1 h-1 rounded-full bg-[#a09a94] opacity-20`} />
       ))}
 
-      {/* Smoke wisps — rise from behind "brewing." */}
-      {WISPS.map((w, i) => (
-        <SmokeWisp key={i} {...w} />
-      ))}
+      {/* Smoke wisps placeholder — rendered inside headline block below */}
 
       {/* Wordmark — click 5× to reveal admin unlock */}
       <motion.button
@@ -170,16 +169,24 @@ export default function ComingSoonPage() {
           Opening soon
         </motion.p>
 
-        {/* Headline */}
-        <motion.h1
+        {/* Headline + smoke rising from "brewing." */}
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.45, ease: "easeOut" }}
-          className="font-serif text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.95] tracking-tight"
+          className="relative"
         >
-          Something is<br />
-          <em className="not-italic" style={{ color: "#c8a45a" }}>brewing.</em>
-        </motion.h1>
+          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.95] tracking-tight relative z-10">
+            Something is<br />
+            <em className="not-italic" style={{ color: "#c8a45a" }}>brewing.</em>
+          </h1>
+          {/* Smoke rises from the bottom of "brewing." */}
+          <div className="absolute bottom-2 left-0 right-0 pointer-events-none" style={{ height: 0 }}>
+            {WISPS.map((w, i) => (
+              <SmokeWisp key={i} {...w} />
+            ))}
+          </div>
+        </motion.div>
 
         {/* Divider */}
         <motion.div
