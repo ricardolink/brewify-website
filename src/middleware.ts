@@ -8,7 +8,7 @@ const PUBLIC_PREFIXES = [
   "/fonts/",
 ];
 
-const PUBLIC_EXACT = ["/", "/the-100", "/membership"];
+const PUBLIC_EXACT = ["/"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
