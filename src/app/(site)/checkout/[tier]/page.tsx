@@ -115,7 +115,7 @@ export default function CheckoutPage() {
             <div className="border border-zinc-900 rounded-xl overflow-hidden">
               <div className="px-5 py-4 border-b border-zinc-900 flex justify-between text-sm">
                 <span className="text-brew-warm-gray">THE 100 Founding Membership</span>
-                <span className="font-medium">$189.90</span>
+                <span className="font-medium">$299</span>
               </div>
               <div className="px-5 py-4 flex justify-between text-xs text-zinc-600">
                 <span>One-time · No subscription · Permanent</span>
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
               className="w-full rounded-full bg-brew-ivory text-brew-black py-4 text-[11px] font-medium uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
               onClick={() => alert("Payment integration coming soon — connect Stripe to activate.")}
             >
-              Complete purchase · $189.90
+              Complete purchase · $299
             </button>
             <p className="text-[10px] text-zinc-600 text-center">Secure checkout · No recurring charges</p>
           </div>
