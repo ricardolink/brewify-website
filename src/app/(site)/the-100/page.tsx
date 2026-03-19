@@ -246,16 +246,53 @@ export default function TheHundredPage() {
               </div>
 
               <SectionFade className="pt-8 border-t border-zinc-800/80">
-                <p className="text-2xl md:text-3xl font-medium text-brew-ivory mb-6">
-                  {t.the100.spotsRemaining(spotsRemaining)}
-                </p>
-                <div className="grid grid-cols-8 gap-2">
-                  {unclaimed.map((num) => (
-                    <span key={num} className="text-[11px] font-mono text-brew-warm-gray/40 text-center py-1">
-                      {num}
-                    </span>
-                  ))}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                  <div className="space-y-2">
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-brew-warm-gray">Available</p>
+                    <p className="text-5xl md:text-6xl font-medium text-brew-ivory tabular-nums">
+                      {spotsRemaining}
+                      <span className="text-xl md:text-2xl text-brew-warm-gray font-normal ml-2">/ 100</span>
+                    </p>
+                    <p className="text-sm text-brew-warm-gray">spots remaining</p>
+                  </div>
+                  <Link
+                    href="/membership"
+                    className="self-start md:self-end inline-flex items-center justify-center rounded-full border border-brew-ivory px-8 py-4 text-[11px] font-medium uppercase tracking-[0.22em] text-brew-ivory hover:bg-brew-ivory hover:text-brew-black transition-colors"
+                  >
+                    Claim your spot
+                  </Link>
                 </div>
+
+                {/* Progress bar */}
+                <div className="mt-8 space-y-2">
+                  <div className="w-full h-px bg-zinc-800 relative overflow-hidden rounded-full">
+                    <motion.div
+                      className="absolute left-0 top-0 h-full bg-brew-ivory"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(members.length / 100) * 100}%` }}
+                      transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] uppercase tracking-[0.3em] text-brew-warm-gray/60">
+                    <span>{members.length} claimed</span>
+                    <span>{spotsRemaining} open</span>
+                  </div>
+                </div>
+
+                {/* Next available numbers — just a hint, not all 97 */}
+                {unclaimed.length > 0 && (
+                  <div className="mt-6 flex items-center gap-3 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-[0.35em] text-brew-warm-gray/50">Next open</span>
+                    {unclaimed.slice(0, 5).map((num) => (
+                      <span key={num} className="font-mono text-xs text-brew-warm-gray/50 border border-zinc-800 px-2 py-1 rounded">
+                        {num}
+                      </span>
+                    ))}
+                    {unclaimed.length > 5 && (
+                      <span className="text-xs text-brew-warm-gray/40">+{unclaimed.length - 5} more</span>
+                    )}
+                  </div>
+                )}
               </SectionFade>
             </>
           )}

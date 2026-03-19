@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brewify Coffee — Flagship Store Concept</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --ivory: #f5f2ee;
+    --warm: #a09a94;
+    --gold: #c8a45a;
+    --zinc: #1a1a1a;
+    --border: #2a2a2a;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ─── COVER ─────────────────────────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,164,90,0.06) 0%, transparent 70%);
+  }
+  .cover .b-mono {
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    color: var(--ivory);
+    opacity: 0.04;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .cover .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    position: relative;
+  }
+  .cover h1 em { color: var(--gold); font-style: italic; }
+  .cover .meta {
+    margin-top: 32px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm);
+    opacity: 0.6;
+    position: relative;
+  }
+  .cover .rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+    margin: 28px auto;
+    position: relative;
+  }
+  .cover .desc {
+    font-size: 14px;
+    color: var(--warm);
+    max-width: 440px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  /* ─── SECTIONS ───────────────────────────────────────────── */
+  .section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--warm);
+    opacity: 0.5;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── FLOOR PLAN ─────────────────────────────────────────── */
+  .floorplan-wrap {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 60px;
+    align-items: start;
+  }
+  .floorplan-svg-wrap {
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fp-legend {
+    space: 0;
+  }
+  .fp-legend h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .fp-legend .sub {
+    font-size: 12px;
+    color: var(--warm);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .legend-item p { font-size: 13px; color: var(--ivory); line-height: 1.4; }
+  .legend-item span { font-size: 11px; color: var(--warm); display: block; margin-top: 2px; }
+
+  /* ─── THE 100 WALL ───────────────────────────────────────── */
+  .wall-container {
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .wall-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+  .wall-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .wall-header .label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .wall-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+  }
+  .wall-header p {
+    font-size: 12px;
+    color: var(--warm);
+    margin-top: 8px;
+  }
+  .blend-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .blend-slot {
+    aspect-ratio: 0.6/1;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 6px 4px;
+    background: #111;
+    position: relative;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .blend-slot.filled {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, #1a1408 0%, #111 100%);
+  }
+  .blend-slot.filled::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, rgba(200,164,90,0.12) 0%, transparent 100%);
+    border-radius: 3px 3px 0 0;
+  }
+  .blend-slot .slot-num {
+    font-size: 7px;
+    letter-spacing: 0.2em;
+    color: var(--warm);
+    opacity: 0.4;
+  }
+  .blend-slot.filled .slot-num {
+    color: var(--gold);
+    opacity: 0.8;
+  }
+  .blend-slot .slot-name {
+    font-size: 6px;
+    color: var(--warm);
+    text-align: center;
+    opacity: 0;
+    line-height: 1.2;
+  }
+  .blend-slot.filled .slot-name {
+    opacity: 0.7;
+  }
+  .wall-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--warm);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── PERSPECTIVE VIEW ───────────────────────────────────── */
+  .perspective-scene {
+    width: 100%;
+    height: 520px;
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Floor */
+  .pf-floor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom,
+      #161410 0%,
+      #1a1714 40%,
+      #1e1b17 100%
+    );
+  }
+  .pf-floor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 79px,
+      rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 79px,
+      rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px
+    );
+  }
+
+  /* Back wall */
+  .pf-back-wall {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 52%;
+    background: linear-gradient(to bottom, #111 0%, #0f0f0f 100%);
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  /* THE 100 WALL — left side */
+  .pf-left-wall {
+    position: absolute;
+    top: 0; left: 0;
+    width: 28%;
+    height: 100%;
+    background: linear-gradient(to right, #0e0e0e, #111);
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    gap: 12px;
+  }
+  .pf-wall-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    writing-mode: horizontal-tb;
+    margin-bottom: 4px;
+  }
+  .pf-shelf-row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+  .pf-bag {
+    width: 14px;
+    height: 20px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 2px;
+    position: relative;
+  }
+  .pf-bag.gold {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, #1e1a10, #111);
+  }
+  .pf-shelf {
+    width: 100%;
+    height: 2px;
+    background: #1e1e1e;
+    border-radius: 1px;
+    margin: 4px 0;
+  }
+  .pf-shelf.gold { background: var(--gold); opacity: 0.3; }
+
+  /* Bar counter — center/right */
+  .pf-counter {
+    position: absolute;
+    bottom: 30px;
+    left: 30%;
+    right: 60px;
+    height: 110px;
+  }
+  /* Counter top */
+  .pf-counter-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 14px;
+    background: linear-gradient(to bottom, #2a2520, #1a1714);
+    border: 1px solid #2e2a25;
+    border-radius: 2px 2px 0 0;
+  }
+  /* Counter face */
+  .pf-counter-face {
+    position: absolute;
+    top: 14px; left: 0; right: 0;
+    height: 96px;
+    background: linear-gradient(to right, #111 0%, #141414 100%);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 2px 2px;
+  }
+  /* Counter panel lines */
+  .pf-counter-face::before {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px; right: 20px;
+    height: 1px;
+    background: var(--border);
+  }
+  /* Espresso machine silhouette */
+  .pf-machine {
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    width: 70px;
+    height: 60px;
+    background: linear-gradient(to bottom, #1e1e1e, #161616);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+  }
+  .pf-machine::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 8px;
+    width: 54px;
+    height: 4px;
+    background: #2a2a2a;
+    border-radius: 2px;
+  }
+  .pf-machine::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 20px;
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+  /* Pour-over stand */
+  .pf-pourover {
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    width: 24px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .pf-pourover-cone {
+    width: 20px;
+    height: 16px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  }
+  .pf-pourover-cup {
+    width: 14px;
+    height: 12px;
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 0 0 3px 3px;
+  }
+  .pf-pourover-base {
+    width: 20px;
+    height: 3px;
+    background: #1a1a1a;
+    border-radius: 1px;
+  }
+
+  /* Pendant lights */
+  .pf-pendant {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pf-pendant-wire {
+    width: 1px;
+    background: #2a2a2a;
+  }
+  .pf-pendant-bulb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50% 50% 40% 40%;
+    background: radial-gradient(circle at 40% 35%, #c8a45a 0%, #8a6a30 50%, transparent 80%);
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(200, 164, 90, 0.3), 0 0 40px rgba(200, 164, 90, 0.1);
+  }
+
+  /* Stools */
+  .pf-stool {
+    position: absolute;
+    bottom: 22px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .pf-stool-seat {
+    width: 20px;
+    height: 5px;
+    background: #1a1a1a;
+    border: 1px solid #252525;
+    border-radius: 1px;
+  }
+  .pf-stool-leg {
+    width: 1px;
+    height: 20px;
+    background: #252525;
+  }
+  .pf-stool-base {
+    width: 14px;
+    height: 2px;
+    background: #1e1e1e;
+  }
+
+  /* Window right wall */
+  .pf-right-wall {
+    position: absolute;
+    top: 0; right: 0;
+    width: 8%;
+    height: 100%;
+    background: linear-gradient(to left, #0e0e0e, transparent);
+  }
+
+  /* Ambient glow from pendants */
+  .pf-glow {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,164,90,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Light strips on 100 wall */
+  .pf-lightstrip {
+    position: absolute;
+    top: 0;
+    left: 28%;
+    width: 1px;
+    height: 52%;
+    background: linear-gradient(to bottom, rgba(200,164,90,0.2), transparent);
+  }
+
+  /* Menu board */
+  .pf-menu {
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    width: 120px;
+    height: 70px;
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pf-menu-line {
+    height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+  }
+  .pf-menu-line.short { width: 60%; }
+  .pf-menu-line.gold { background: var(--gold); opacity: 0.2; width: 80%; }
+  .pf-menu-label {
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    color: var(--warm);
+    opacity: 0.4;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* ─── MATERIALS ──────────────────────────────────────────── */
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .material-swatch {
+    space: 0;
+  }
+  .swatch-block {
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+  }
+  .swatch-label {
+    font-size: 11px;
+    color: var(--ivory);
+    margin-bottom: 2px;
+  }
+  .swatch-sub {
+    font-size: 10px;
+    color: var(--warm);
+    opacity: 0.6;
+  }
+
+  /* ─── FEATURES LIST ──────────────────────────────────────── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    space: 0;
+  }
+  .feature-icon { font-size: 20px; margin-bottom: 12px; }
+  .feature-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .feature-card p { font-size: 12px; color: var(--warm); line-height: 1.6; }
+
+  /* ─── DIMENSIONS ─────────────────────────────────────────── */
+  .dims-table { width: 100%; border-collapse: collapse; }
+  .dims-table th {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--warm);
+    opacity: 0.5;
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dims-table td {
+    font-size: 13px;
+    color: var(--ivory);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .dims-table td:first-child { color: var(--warm); font-size: 11px; letter-spacing: 0.1em; width: 200px; }
+  .dims-table td.gold { color: var(--gold); }
+
+  /* ─── FOOTER ─────────────────────────────────────────────── */
+  .doc-footer {
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .doc-footer p { font-size: 10px; color: var(--warm); opacity: 0.3; letter-spacing: 0.2em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ COVER ═══════════════════════ -->
+<div class="cover">
+  <div class="b-mono">B</div>
+  <p class="eyebrow">Store concept · 2026</p>
+  <h1>Brewify Coffee<br><em>Flagship Store</em></h1>
+  <div class="rule"></div>
+  <p class="desc">A small, intimate space where coffee is personal. THE 100 founding member blends on the wall. Every cup made to order.</p>
+  <p class="meta" style="margin-top:40px">Los Angeles, CA · ~650 sq ft · Concept Design</p>
+</div>
+
+<!-- ═══════════════════════ FLOOR PLAN ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">01 · Floor Plan</p>
+  <div class="floorplan-wrap">
+    <div class="floorplan-svg-wrap">
+      <svg width="100%" viewBox="0 0 520 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer walls -->
+        <rect x="20" y="20" width="480" height="360" stroke="#2a2a2a" stroke-width="8" fill="#0d0d0d"/>
+
+        <!-- THE 100 WALL — left feature wall (shaded) -->
+        <rect x="20" y="20" width="110" height="360" fill="#111" stroke="none"/>
+        <text x="75" y="200" font-size="8" fill="#c8a45a" opacity="0.7" text-anchor="middle" letter-spacing="3" transform="rotate(-90,75,200)" font-family="Inter">THE 100 WALL</text>
+
+        <!-- Wall shelving lines on 100 wall -->
+        <line x1="40" y1="100" x2="110" y2="100" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="40" y1="140" x2="110" y2="140" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="40" y1="180" x2="110" y2="180" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="40" y1="220" x2="110" y2="220" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="40" y1="260" x2="110" y2="260" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="40" y1="300" x2="110" y2="300" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+
+        <!-- Bar counter -->
+        <rect x="150" y="260" width="300" height="55" rx="2" fill="#161410" stroke="#2e2a25" stroke-width="1.5"/>
+        <rect x="150" y="260" width="300" height="8" rx="1" fill="#2a2520" stroke="#333" stroke-width="1"/>
+        <text x="300" y="295" font-size="8" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter" letter-spacing="3">BAR COUNTER</text>
+
+        <!-- Espresso machine on counter -->
+        <rect x="170" y="230" width="50" height="30" rx="2" fill="#1a1a1a" stroke="#2a2a2a"/>
+        <text x="195" y="249" font-size="6" fill="#a09a94" opacity="0.5" text-anchor="middle" font-family="Inter">ESPRESSO</text>
+
+        <!-- Pour-over station -->
+        <rect x="370" y="238" width="30" height="22" rx="2" fill="#1a1a1a" stroke="#2a2a2a"/>
+        <text x="385" y="253" font-size="5" fill="#a09a94" opacity="0.5" text-anchor="middle" font-family="Inter">POUR</text>
+
+        <!-- Stools -->
+        <circle cx="190" cy="340" r="12" fill="none" stroke="#252525" stroke-width="1.5"/>
+        <circle cx="240" cy="340" r="12" fill="none" stroke="#252525" stroke-width="1.5"/>
+        <circle cx="290" cy="340" r="12" fill="none" stroke="#252525" stroke-width="1.5"/>
+        <circle cx="340" cy="340" r="12" fill="none" stroke="#252525" stroke-width="1.5"/>
+        <circle cx="390" cy="340" r="12" fill="none" stroke="#252525" stroke-width="1.5"/>
+
+        <!-- Stool labels -->
+        <text x="290" y="370" font-size="7" fill="#a09a94" opacity="0.3" text-anchor="middle" font-family="Inter" letter-spacing="2">BAR SEATING · 5 SEATS</text>
+
+        <!-- Standing table top right -->
+        <rect x="380" y="60" width="90" height="90" rx="4" fill="#111" stroke="#252525" stroke-width="1.5"/>
+        <text x="425" y="109" font-size="7" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter" letter-spacing="2">TABLE</text>
+        <circle cx="395" cy="170" r="8" fill="none" stroke="#252525"/>
+        <circle cx="435" cy="170" r="8" fill="none" stroke="#252525"/>
+
+        <!-- Counter seating top center -->
+        <rect x="155" y="60" width="200" height="60" rx="2" fill="#0f0f0f" stroke="#222" stroke-width="1"/>
+        <text x="255" y="95" font-size="7" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter" letter-spacing="2">WINDOW COUNTER</text>
+
+        <!-- Window seating stools -->
+        <circle cx="185" cy="140" r="9" fill="none" stroke="#222"/>
+        <circle cx="220" cy="140" r="9" fill="none" stroke="#222"/>
+        <circle cx="255" cy="140" r="9" fill="none" stroke="#222"/>
+        <circle cx="290" cy="140" r="9" fill="none" stroke="#222"/>
+
+        <!-- Back wall menu/display area -->
+        <rect x="130" y="20" width="370" height="30" fill="#0f0f0f" stroke="#1a1a1a"/>
+        <text x="315" y="39" font-size="7" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter" letter-spacing="3">BACK WALL · MENU + DISPLAY</text>
+
+        <!-- Entry door -->
+        <rect x="210" y="360" width="70" height="28" fill="#0a0a0a" stroke="#333" stroke-width="1.5"/>
+        <text x="245" y="378" font-size="7" fill="#a09a94" opacity="0.5" text-anchor="middle" font-family="Inter" letter-spacing="2">ENTRY</text>
+        <!-- Door swing -->
+        <path d="M 210 360 Q 180 345 210 332" stroke="#2a2a2a" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+
+        <!-- Dimensions -->
+        <line x1="20" y1="8" x2="500" y2="8" stroke="#2a2a2a" stroke-width="0.5"/>
+        <text x="260" y="5" font-size="7" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter">26 ft</text>
+        <line x1="8" y1="20" x2="8" y2="380" stroke="#2a2a2a" stroke-width="0.5"/>
+        <text x="5" y="200" font-size="7" fill="#a09a94" opacity="0.4" text-anchor="middle" font-family="Inter" transform="rotate(-90,5,200)">20 ft</text>
+
+        <!-- N arrow -->
+        <text x="480" y="38" font-size="9" fill="#a09a94" opacity="0.3" text-anchor="middle" font-family="Inter">N↑</text>
+      </svg>
+    </div>
+
+    <div class="fp-legend">
+      <h3>Ground Floor Plan</h3>
+      <p class="sub">~520 sq ft net · Single-level · Open plan with defined zones</p>
+
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#c8a45a"></div>
+        <div>
+          <p>THE 100 Wall</p>
+          <span>Backlit shelving displaying all 100 founding member blends. Floor to ceiling. The first thing you see on entry.</span>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#f5f2ee;opacity:0.6"></div>
+        <div>
+          <p>Bar Counter</p>
+          <span>Dark concrete top. Espresso + pour-over stations. 5 bar stools facing the counter.</span>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#a09a94"></div>
+        <div>
+          <p>Window Counter</p>
+          <span>4 bar stools along the street-facing window. Good light, community feel.</span>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#2a2a2a"></div>
+        <div>
+          <p>High Table</p>
+          <span>One square high table, seats 4. For lingering, working, waiting for a pour-over.</span>
+        </div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#1a1a1a;border:1px solid #333"></div>
+        <div>
+          <p>Back Wall</p>
+          <span>Minimal menu board + rotating featured blend display. Matte black finish.</span>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
+        <p style="font-size:10px;color:var(--warm);line-height:1.7;opacity:0.7">
+          Total capacity: <strong style="color:var(--ivory)">~14 guests</strong><br>
+          Target: Silver Lake, WeHo, or Arts District, LA<br>
+          Street frontage preferred · Minimal signage
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PERSPECTIVE VIEW ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">02 · Interior Perspective — THE 100 Wall</p>
+
+  <div class="perspective-scene">
+    <!-- Ambient glow -->
+    <div class="pf-glow" style="width:300px;height:300px;top:-50px;left:5%;"></div>
+    <div class="pf-glow" style="width:200px;height:200px;top:-30px;left:40%;"></div>
+
+    <!-- Back wall -->
+    <div class="pf-back-wall"></div>
+
+    <!-- Floor -->
+    <div class="pf-floor"></div>
+
+    <!-- Light strip where 100 wall meets back wall -->
+    <div class="pf-lightstrip"></div>
+
+    <!-- THE 100 WALL -->
+    <div class="pf-left-wall">
+      <div class="pf-wall-label">THE 100</div>
+      <!-- Shelf rows of blend bags -->
+      <div class="pf-shelf pf-shelf gold"></div>
+      <div class="pf-shelf-row">
+        <div class="pf-bag gold"></div><div class="pf-bag gold"></div><div class="pf-bag gold"></div>
+        <div class="pf-bag"></div><div class="pf-bag"></div>
+      </div>
+      <div class="pf-shelf"></div>
+      <div class="pf-shelf-row">
+        <div class="pf-bag gold"></div><div class="pf-bag"></div><div class="pf-bag gold"></div>
+        <div class="pf-bag gold"></div><div class="pf-bag"></div>
+      </div>
+      <div class="pf-shelf"></div>
+      <div class="pf-shelf-row">
+        <div class="pf-bag"></div><div class="pf-bag gold"></div><div class="pf-bag gold"></div>
+        <div class="pf-bag"></div><div class="pf-bag gold"></div>
+      </div>
+      <div class="pf-shelf"></div>
+      <div class="pf-shelf-row">
+        <div class="pf-bag gold"></div><div class="pf-bag gold"></div><div class="pf-bag"></div>
+        <div class="pf-bag"></div><div class="pf-bag gold"></div>
+      </div>
+      <div class="pf-shelf"></div>
+      <div class="pf-shelf-row">
+        <div class="pf-bag"></div><div class="pf-bag"></div><div class="pf-bag gold"></div>
+        <div class="pf-bag"></div><div class="pf-bag"></div>
+      </div>
+      <div class="pf-shelf pf-shelf gold"></div>
+      <div style="font-size:7px;color:var(--gold);opacity:0.5;letter-spacing:0.3em;text-transform:uppercase;margin-top:4px">100 Blends</div>
+    </div>
+
+    <!-- Menu board on back wall -->
+    <div class="pf-menu">
+      <div class="pf-menu-label">Menu</div>
+      <div class="pf-menu-line gold"></div>
+      <div class="pf-menu-line short"></div>
+      <div class="pf-menu-line" style="width:90%"></div>
+      <div class="pf-menu-line short"></div>
+      <div class="pf-menu-line gold" style="width:70%"></div>
+    </div>
+
+    <!-- Pendant lights -->
+    <div class="pf-pendant" style="top:0;left:38%;">
+      <div class="pf-pendant-wire" style="height:60px;"></div>
+      <div class="pf-pendant-bulb"></div>
+    </div>
+    <div class="pf-pendant" style="top:0;left:55%;">
+      <div class="pf-pendant-wire" style="height:45px;"></div>
+      <div class="pf-pendant-bulb"></div>
+    </div>
+    <div class="pf-pendant" style="top:0;left:70%;">
+      <div class="pf-pendant-wire" style="height:55px;"></div>
+      <div class="pf-pendant-bulb"></div>
+    </div>
+    <div class="pf-pendant" style="top:0;left:84%;">
+      <div class="pf-pendant-wire" style="height:40px;"></div>
+      <div class="pf-pendant-bulb"></div>
+    </div>
+
+    <!-- Counter -->
+    <div class="pf-counter">
+      <div class="pf-counter-top"></div>
+      <div class="pf-counter-face">
+        <div class="pf-machine"></div>
+        <div class="pf-pourover"></div>
+      </div>
+    </div>
+
+    <!-- Stools -->
+    <div class="pf-stool" style="left:38%;">
+      <div class="pf-stool-seat"></div><div class="pf-stool-leg"></div><div class="pf-stool-base"></div>
+    </div>
+    <div class="pf-stool" style="left:50%;">
+      <div class="pf-stool-seat"></div><div class="pf-stool-leg"></div><div class="pf-stool-base"></div>
+    </div>
+    <div class="pf-stool" style="left:62%;">
+      <div class="pf-stool-seat"></div><div class="pf-stool-leg"></div><div class="pf-stool-base"></div>
+    </div>
+    <div class="pf-stool" style="left:74%;">
+      <div class="pf-stool-seat"></div><div class="pf-stool-leg"></div><div class="pf-stool-base"></div>
+    </div>
+    <div class="pf-stool" style="left:86%;">
+      <div class="pf-stool-seat"></div><div class="pf-stool-leg"></div><div class="pf-stool-base"></div>
+    </div>
+
+    <!-- Right wall fade -->
+    <div class="pf-right-wall"></div>
+
+    <!-- Labels -->
+    <div style="position:absolute;bottom:12px;left:14%;font-size:7px;letter-spacing:0.3em;color:var(--gold);opacity:0.5;text-transform:uppercase;">The 100 Wall</div>
+    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:7px;letter-spacing:0.3em;color:var(--warm);opacity:0.4;text-transform:uppercase;">Bar · Espresso + Pour-over</div>
+  </div>
+
+  <p style="font-size:11px;color:var(--warm);opacity:0.4;margin-top:16px;text-align:center;letter-spacing:0.1em">
+    Perspective render — illustrative concept · Ambient lighting from overhead pendants and THE 100 wall uplighting
+  </p>
+</div>
+
+<!-- ═══════════════════════ THE 100 WALL DETAIL ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">03 · THE 100 Wall — Detail</p>
+  <div class="wall-container">
+    <div class="wall-header">
+      <div class="label">Founding Members · THE 100</div>
+      <h2>Every blend. Every name. On the wall.</h2>
+      <p>100 numbered slots. Backlit. Floor to ceiling. Each one a real person's blend.</p>
+    </div>
+
+    <div class="blend-grid">
+      <!-- 100 slots: 3 filled (001, 002, 003), rest empty -->
+      <div class="blend-slot filled" title="@javiermoore">
+        <div class="slot-name">Still<br>Water</div>
+        <div class="slot-num">001</div>
+      </div>
+      <div class="blend-slot filled" title="@solenneart">
+        <div class="slot-name">La<br>Lumière</div>
+        <div class="slot-num">002</div>
+      </div>
+      <div class="blend-slot filled" title="@kaito.w">
+        <div class="slot-name">Kaze</div>
+        <div class="slot-num">003</div>
+      </div>
+      <!-- 97 empty slots -->
+      <script>
+        for(let i=4; i<=100; i++){
+          document.write('<div class="blend-slot"><div class="slot-num">' + String(i).padStart(3,'0') + '</div></div>');
+        }
+      </script>
+    </div>
+
+    <p class="wall-note">Gold = claimed · 3 of 100 spots filled · Each slot displays blend name + bag permanently</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FEATURES ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">04 · Store Features</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">☕</div>
+      <h3>Made to Order</h3>
+      <p>Every cup brewed fresh. No batch brewing. Espresso, pour-over, and cold brew only. Small menu — done perfectly.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏷️</div>
+      <h3>Order Your Blend</h3>
+      <p>Founding members can order their personal blend at the counter. Their number called, their cup made from their recipe.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>Bag Retail Wall</h3>
+      <p>THE 100 blends available for purchase in-store. Visitors can order any founding member's blend as a 12oz bag to take home.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>No Generic Menu</h3>
+      <p>No "house blend." No pre-made options. Every drink starts with a choice from the wall or a standard origin — nothing unnamed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌱</div>
+      <h3>Amazon-Sourced Only</h3>
+      <p>All beans traceable to small family farms in the Amazon basin. Origin cards displayed next to each blend on the wall.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Tap to Redeem</h3>
+      <p>Founding members scan their member QR from the app to redeem their daily free coffee. One per day, no exceptions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MATERIALS ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">05 · Materials & Finishes</p>
+  <div class="materials-grid">
+    <div class="material-swatch">
+      <div class="swatch-block" style="background:#0a0a0a;"></div>
+      <div class="swatch-label">Matte Black</div>
+      <div class="swatch-sub">Walls · Ceiling · Fixtures</div>
+    </div>
+    <div class="material-swatch">
+      <div class="swatch-block" style="background:linear-gradient(135deg,#2a2520,#1a1714);"></div>
+      <div class="swatch-label">Dark Concrete</div>
+      <div class="swatch-sub">Bar counter · Floor</div>
+    </div>
+    <div class="material-swatch">
+      <div class="swatch-block" style="background:linear-gradient(135deg,#c8a45a,#9e7e3a);"></div>
+      <div class="swatch-label">Brushed Brass</div>
+      <div class="swatch-sub">Shelf edges · Hardware · THE 100 numbers</div>
+    </div>
+    <div class="material-swatch">
+      <div class="swatch-block" style="background:#f5f2ee;"></div>
+      <div class="swatch-label">Off-White</div>
+      <div class="swatch-sub">Ceiling · Bag packaging · Menu text</div>
+    </div>
+    <div class="material-swatch">
+      <div class="swatch-block" style="background:linear-gradient(135deg,#1e1e1e,#2a2822);"></div>
+      <div class="swatch-label">Dark Oak / Walnut</div>
+      <div class="swatch-sub">Shelving · Stool seats · Table</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DIMENSIONS TABLE ═══════════════════════ -->
+<div style="max-width:1200px;margin:0 auto;padding:80px 60px;border-bottom:1px solid var(--border)">
+  <p class="section-label">06 · Space Breakdown</p>
+  <table class="dims-table">
+    <thead>
+      <tr>
+        <th>Zone</th>
+        <th>Dimensions</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total footprint</td>
+        <td class="gold">~520 sq ft</td>
+        <td>26 × 20 ft · Ideal: ground floor retail unit</td>
+      </tr>
+      <tr>
+        <td>THE 100 Wall</td>
+        <td>8 × 20 ft</td>
+        <td>Full left wall. Floor-to-ceiling backlit shelving. 100 numbered slots in brass.</td>
+      </tr>
+      <tr>
+        <td>Bar Counter</td>
+        <td>12 ft wide · 5 stools</td>
+        <td>Dark concrete top. Espresso machine + 2 pour-over stations. Back bar storage.</td>
+      </tr>
+      <tr>
+        <td>Window Counter</td>
+        <td>10 ft wide · 4 stools</td>
+        <td>Street-facing. Natural light. Good for remote workers and lingerers.</td>
+      </tr>
+      <tr>
+        <td>High Table</td>
+        <td>36" × 36" · 4 seats</td>
+        <td>Single table. No clutter. Intentionally minimal seating capacity.</td>
+      </tr>
+      <tr>
+        <td>Back-of-house</td>
+        <td>~60 sq ft</td>
+        <td>Storage, bean stock, small prep area. Not customer-facing.</td>
+      </tr>
+      <tr>
+        <td>Total seating</td>
+        <td class="gold">~13 seats</td>
+        <td>Intentionally small. Creates scarcity, intimacy, and demand.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════ CONCEPT NOTE ═══════════════════════ -->
+<div style="max-width:800px;margin:0 auto;padding:80px 60px;text-align:center;">
+  <p style="font-size:9px;letter-spacing:0.5em;text-transform:uppercase;color:var(--warm);opacity:0.5;margin-bottom:24px;">Design philosophy</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;line-height:1.4;margin-bottom:24px;">
+    The store isn't a café.<br>
+    <em style="color:var(--gold);">It's a gallery for 100 people.</em>
+  </h2>
+  <p style="font-size:13px;color:var(--warm);line-height:1.8;max-width:560px;margin:0 auto;">
+    Most coffee shops design for volume. Brewify's flagship designs for meaning. Every seat is intentional. Every blend on the wall is a real person. The space is small by choice — because when everyone can get in, it stops feeling like something worth being part of.
+  </p>
+</div>
+
+<div class="doc-footer">
+  <p>Brewify Coffee · Flagship Store Concept · 2026</p>
+  <p>brewifycoffee.com · iam@brewifycoffee.com</p>
+</div>
+
+</body>
+</html>

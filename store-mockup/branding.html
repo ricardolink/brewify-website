@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Brewify Coffee — Brand Identity</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@200;300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a0a;color:#f5f2ee;font-family:'Inter',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+
+.page{max-width:1300px;margin:0 auto}
+.sec{padding:100px 60px;border-bottom:1px solid #161616}
+.sec-eyebrow{font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:#a09a94;opacity:.45;margin-bottom:48px;display:flex;align-items:center;gap:16px}
+.sec-eyebrow::after{content:'';flex:1;height:1px;background:#161616}
+.product-name{font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:#a09a94;opacity:.5;margin-top:22px;text-align:center}
+.product-spec{font-size:11px;color:#a09a94;margin-top:5px;text-align:center;line-height:1.7;opacity:.6}
+
+/* COVER */
+.cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;border-bottom:1px solid #161616;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(200,164,90,.04),transparent 65%);pointer-events:none}
+.bg-b{font-family:'Playfair Display',serif;font-size:min(38vw,520px);color:#f5f2ee;opacity:.018;position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);line-height:1;pointer-events:none;user-select:none}
+.cover-eye{font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:#a09a94;opacity:.4;margin-bottom:22px;position:relative;z-index:1}
+.cover h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:400;line-height:1.08;position:relative;z-index:1}
+.cover h1 em{color:#c8a45a;font-style:italic}
+.rule{width:32px;height:1px;background:#c8a45a;opacity:.3;margin:26px auto;position:relative;z-index:1}
+.cover-sub{font-size:12px;color:#a09a94;line-height:1.8;max-width:400px;position:relative;z-index:1;opacity:.7}
+
+/* GRID LAYOUTS */
+.row{display:flex;gap:0;align-items:flex-end;justify-content:center;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="bg-b">B</div>
+  <p class="cover-eye">Brand Identity · 2026</p>
+  <h1>Brewify Coffee<br><em>Visual System</em></h1>
+  <div class="rule"></div>
+  <p class="cover-sub">Packaging, print, and uniform system for the flagship Los Angeles location.</p>
+</div>
+
+<div class="page">
+
+<!-- ══ 01 COLOR ══ -->
+<section class="sec" style="padding:0;max-width:100%;border-bottom:1px solid #161616">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr)">
+    <div style="height:220px;background:#0a0a0a;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 26px;border-right:1px solid #161616">
+      <div style="font-size:13px;color:#f5f2ee;margin-bottom:3px">Brew Black</div>
+      <div style="font-size:10px;color:#a09a94;opacity:.5;letter-spacing:.15em;font-family:monospace">#0A0A0A</div>
+      <div style="font-size:8px;color:#a09a94;opacity:.35;letter-spacing:.25em;text-transform:uppercase;margin-top:4px">Primary</div>
+    </div>
+    <div style="height:220px;background:#f5f2ee;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 26px;border-right:1px solid #e0ddd8">
+      <div style="font-size:13px;color:#0a0a0a;margin-bottom:3px">Brew Ivory</div>
+      <div style="font-size:10px;color:#6a6460;opacity:.7;letter-spacing:.15em;font-family:monospace">#F5F2EE</div>
+      <div style="font-size:8px;color:#6a6460;opacity:.5;letter-spacing:.25em;text-transform:uppercase;margin-top:4px">Background</div>
+    </div>
+    <div style="height:220px;background:#c8a45a;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 26px;border-right:1px solid #b8923e">
+      <div style="font-size:13px;color:#0a0a0a;margin-bottom:3px">Brew Gold</div>
+      <div style="font-size:10px;color:#3a2a08;opacity:.7;letter-spacing:.15em;font-family:monospace">#C8A45A</div>
+      <div style="font-size:8px;color:#3a2a08;opacity:.5;letter-spacing:.25em;text-transform:uppercase;margin-top:4px">Accent</div>
+    </div>
+    <div style="height:220px;background:#a09a94;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 26px">
+      <div style="font-size:13px;color:#0a0a0a;margin-bottom:3px">Brew Warm</div>
+      <div style="font-size:10px;color:#2a2420;opacity:.7;letter-spacing:.15em;font-family:monospace">#A09A94</div>
+      <div style="font-size:8px;color:#2a2420;opacity:.5;letter-spacing:.25em;text-transform:uppercase;margin-top:4px">Secondary</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 CUPS ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">02 · Cups &amp; Drinkware</p>
+  <div class="row" style="gap:48px;align-items:flex-end;padding:20px 0 40px">
+
+    <!-- ESPRESSO 3oz -->
+    <div class="col">
+      <svg width="130" height="210" viewBox="0 0 130 210">
+        <defs>
+          <linearGradient id="cup-xs-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#252525"/>
+            <stop offset="18%" stop-color="#1a1a1a"/>
+            <stop offset="45%" stop-color="#111111"/>
+            <stop offset="72%" stop-color="#0a0a0a"/>
+            <stop offset="88%" stop-color="#070707"/>
+            <stop offset="100%" stop-color="#040404"/>
+          </linearGradient>
+          <linearGradient id="lid-xs" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d8d4ce"/>
+            <stop offset="30%" stop-color="#edeae4"/>
+            <stop offset="60%" stop-color="#f0ece6"/>
+            <stop offset="100%" stop-color="#c8c4be"/>
+          </linearGradient>
+          <radialGradient id="shadow-xs" cx="50%" cy="30%" r="50%">
+            <stop offset="0%" stop-color="#000" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="soft-shadow"><feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#000" flood-opacity="0.55"/></filter>
+          <filter id="paper-xs">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="3" result="noise"/>
+            <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+            <feComponentTransfer in="gray" result="tex">
+              <feFuncR type="linear" slope="0.07" intercept="0"/>
+              <feFuncG type="linear" slope="0.07" intercept="0"/>
+              <feFuncB type="linear" slope="0.07" intercept="0"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" in2="tex" mode="screen"/>
+          </filter>
+          <clipPath id="clip-xs-body">
+            <path d="M 22 52 L 108 52 L 98 175 L 32 175 Z"/>
+          </clipPath>
+        </defs>
+        <!-- Ground shadow -->
+        <ellipse cx="65" cy="196" rx="45" ry="9" fill="#000" opacity="0.45"/>
+        <!-- Cup body -->
+        <g filter="url(#soft-shadow)">
+          <path d="M 22 52 L 108 52 L 98 175 L 32 175 Z" fill="url(#cup-xs-body)"/>
+          <!-- Paper texture -->
+          <rect x="0" y="0" width="130" height="210" fill="url(#paper-xs)" clip-path="url(#clip-xs-body)" opacity="0.6"/>
+          <!-- Left light edge -->
+          <path d="M 22 52 L 34 52 L 29 175 L 32 175 Z" fill="#ffffff" opacity="0.025"/>
+          <!-- Bottom ellipse (dark base) -->
+          <ellipse cx="65" cy="175" rx="33" ry="8" fill="#060606" stroke="#141414" stroke-width="0.5"/>
+          <!-- Top rim ellipse (dark interior) -->
+          <ellipse cx="65" cy="52" rx="43" ry="11" fill="#070707"/>
+          <!-- Top rim highlight ring -->
+          <ellipse cx="65" cy="52" rx="43" ry="11" fill="none" stroke="#1e1e1e" stroke-width="1.2"/>
+          <!-- Lid -->
+          <path d="M 17 52 C 17 52 18 46 65 46 C 112 46 113 52 113 52 L 113 65 C 113 65 112 72 65 72 C 18 72 17 65 17 65 Z" fill="url(#lid-xs)"/>
+          <!-- Lid dome highlight -->
+          <ellipse cx="65" cy="52" rx="34" ry="6" fill="#ffffff" opacity="0.07"/>
+          <!-- Drinking hole -->
+          <path d="M 52 53 Q 65 57 78 53" stroke="#b0aca6" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <!-- Lid tab -->
+          <path d="M 58 44 L 72 44 Q 75 44 75 47 L 55 47 Q 55 44 58 44 Z" fill="#d4d0ca"/>
+          <!-- Lid top face ellipse -->
+          <ellipse cx="65" cy="46" rx="47" ry="9" fill="url(#lid-xs)" opacity="0.9"/>
+        </g>
+        <!-- Gold B logo -->
+        <text x="65" y="130" font-family="'Playfair Display', Georgia, serif" font-size="34" fill="#c8a45a" text-anchor="middle" opacity="0.88">B</text>
+        <!-- Fine gold line under B -->
+        <line x1="53" y1="136" x2="77" y2="136" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <p class="product-name">Espresso · 3 oz</p>
+    </div>
+
+    <!-- REGULAR 12oz (HERO) -->
+    <div class="col">
+      <svg width="200" height="310" viewBox="0 0 200 310">
+        <defs>
+          <linearGradient id="cup-md-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#272727"/>
+            <stop offset="15%" stop-color="#1c1c1c"/>
+            <stop offset="42%" stop-color="#121212"/>
+            <stop offset="68%" stop-color="#0a0a0a"/>
+            <stop offset="85%" stop-color="#080808"/>
+            <stop offset="100%" stop-color="#040404"/>
+          </linearGradient>
+          <linearGradient id="lid-md" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4d0ca"/>
+            <stop offset="25%" stop-color="#ebe7e1"/>
+            <stop offset="55%" stop-color="#f2eee8"/>
+            <stop offset="85%" stop-color="#e4e0da"/>
+            <stop offset="100%" stop-color="#cac6c0"/>
+          </linearGradient>
+          <linearGradient id="sleeve-md" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#201a10"/>
+            <stop offset="30%" stop-color="#191408"/>
+            <stop offset="70%" stop-color="#141008"/>
+            <stop offset="100%" stop-color="#0e0c06"/>
+          </linearGradient>
+          <filter id="shadow-md"><feDropShadow dx="2" dy="18" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/></filter>
+          <filter id="paper-md">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" seed="7" result="noise"/>
+            <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+            <feComponentTransfer in="gray" result="tex">
+              <feFuncR type="linear" slope="0.055" intercept="0"/>
+              <feFuncG type="linear" slope="0.055" intercept="0"/>
+              <feFuncB type="linear" slope="0.055" intercept="0"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" in2="tex" mode="screen"/>
+          </filter>
+          <clipPath id="clip-md-body">
+            <path d="M 22 68 L 178 68 L 164 268 L 36 268 Z"/>
+          </clipPath>
+          <clipPath id="clip-md-sleeve">
+            <path d="M 32 165 L 168 165 L 161 225 L 39 225 Z"/>
+          </clipPath>
+          <radialGradient id="gold-glow" cx="50%" cy="45%" r="45%">
+            <stop offset="0%" stop-color="#e8c070" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#c8a45a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Ground shadow -->
+        <ellipse cx="100" cy="292" rx="68" ry="13" fill="#000" opacity="0.5"/>
+        <!-- Cup group -->
+        <g filter="url(#shadow-md)">
+          <!-- Main body -->
+          <path d="M 22 68 L 178 68 L 164 268 L 36 268 Z" fill="url(#cup-md-body)"/>
+          <!-- Paper texture over body -->
+          <rect x="0" y="0" width="200" height="310" fill="url(#paper-md)" clip-path="url(#clip-md-body)" opacity="0.7"/>
+          <!-- Left edge catch-light -->
+          <path d="M 22 68 L 36 68 L 33 268 L 36 268 Z" fill="#ffffff" opacity="0.022"/>
+          <!-- Seam line (right side subtle) -->
+          <line x1="164" y1="268" x2="178" y2="68" stroke="#080808" stroke-width="0.5"/>
+
+          <!-- SLEEVE -->
+          <path d="M 32 165 L 168 165 L 161 225 L 39 225 Z" fill="url(#sleeve-md)"/>
+          <rect x="0" y="0" width="200" height="310" fill="url(#paper-md)" clip-path="url(#clip-md-sleeve)" opacity="0.5"/>
+          <!-- Sleeve top edge brass line -->
+          <path d="M 32 165 L 168 165" stroke="#c8a45a" stroke-width="0.8" opacity="0.4"/>
+          <!-- Sleeve bottom edge brass line -->
+          <path d="M 39 225 L 161 225" stroke="#c8a45a" stroke-width="0.8" opacity="0.4"/>
+          <!-- Sleeve corrugation hint -->
+          <path d="M 36 167 L 34 223 M 48 167 L 46 223 M 60 167 L 58 223 M 72 168 L 70 224 M 84 168 L 82 224 M 96 168 L 94 224 M 108 168 L 106 224 M 120 168 L 118 224 M 132 168 L 130 224 M 144 168 L 142 224 M 156 168 L 154 224" stroke="#ffffff" stroke-width="0.4" opacity="0.04"/>
+          <!-- Sleeve brand text -->
+          <text x="100" y="200" font-family="'Inter', sans-serif" font-size="7.5" fill="#c8a45a" text-anchor="middle" letter-spacing="4" opacity="0.65">BREWIFY COFFEE</text>
+
+          <!-- Bottom ellipse -->
+          <ellipse cx="100" cy="268" rx="64" ry="14" fill="#050505" stroke="#141414" stroke-width="0.5"/>
+          <!-- Top rim interior (dark) -->
+          <ellipse cx="100" cy="68" rx="78" ry="18" fill="#060606"/>
+          <!-- Top rim ring -->
+          <ellipse cx="100" cy="68" rx="78" ry="18" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+
+          <!-- LID — sits on rim -->
+          <path d="M 18 68 C 18 56 22 50 100 50 C 178 50 182 56 182 68 L 182 82 C 182 92 178 96 100 96 C 22 96 18 92 18 82 Z" fill="url(#lid-md)"/>
+          <!-- Lid dome highlight -->
+          <ellipse cx="100" cy="62" rx="50" ry="10" fill="#ffffff" opacity="0.08"/>
+          <!-- Lid inner shadow where it meets rim -->
+          <ellipse cx="100" cy="82" rx="62" ry="8" fill="#00000022"/>
+          <!-- Drinking aperture -->
+          <path d="M 82 63 Q 100 70 118 63" stroke="#a0a09a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M 83 64 Q 100 68 117 64" stroke="#88847e" stroke-width="0.5" fill="none" stroke-linecap="round"/>
+          <!-- Tab -->
+          <path d="M 91 50 L 109 50 Q 113 50 113 54 L 87 54 Q 87 50 91 50 Z" fill="#d8d4ce"/>
+          <ellipse cx="100" cy="50" rx="60" ry="11" fill="url(#lid-md)" opacity="0.85"/>
+        </g>
+
+        <!-- LOGO: Gold B -->
+        <rect x="70" y="100" width="60" height="58" fill="url(#gold-glow)" opacity="0.9"/>
+        <text x="100" y="148" font-family="'Playfair Display', Georgia, serif" font-size="48" fill="#c8a45a" text-anchor="middle" opacity="0.9">B</text>
+        <line x1="82" y1="154" x2="118" y2="154" stroke="#c8a45a" stroke-width="0.6" opacity="0.25"/>
+      </svg>
+      <p class="product-name">Regular · 12 oz</p>
+      <p class="product-spec">Matte black double-wall<br>Ivory PLA lid · Compostable</p>
+    </div>
+
+    <!-- LARGE 16oz -->
+    <div class="col">
+      <svg width="180" height="290" viewBox="0 0 180 290">
+        <defs>
+          <linearGradient id="cup-lg-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#262626"/>
+            <stop offset="16%" stop-color="#1b1b1b"/>
+            <stop offset="44%" stop-color="#111"/>
+            <stop offset="70%" stop-color="#090909"/>
+            <stop offset="87%" stop-color="#060606"/>
+            <stop offset="100%" stop-color="#030303"/>
+          </linearGradient>
+          <linearGradient id="lid-lg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d2cec8"/>
+            <stop offset="28%" stop-color="#e9e5df"/>
+            <stop offset="58%" stop-color="#f0ece6"/>
+            <stop offset="100%" stop-color="#c8c4be"/>
+          </linearGradient>
+          <linearGradient id="sleeve-lg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1e1810"/>
+            <stop offset="40%" stop-color="#161208"/>
+            <stop offset="100%" stop-color="#0e0c06"/>
+          </linearGradient>
+          <filter id="shadow-lg"><feDropShadow dx="2" dy="16" stdDeviation="12" flood-color="#000" flood-opacity="0.55"/></filter>
+          <clipPath id="clip-lg-body">
+            <path d="M 18 58 L 162 58 L 148 248 L 32 248 Z"/>
+          </clipPath>
+        </defs>
+        <ellipse cx="90" cy="272" rx="62" ry="12" fill="#000" opacity="0.42"/>
+        <g filter="url(#shadow-lg)">
+          <path d="M 18 58 L 162 58 L 148 248 L 32 248 Z" fill="url(#cup-lg-body)"/>
+          <path d="M 18 58 L 31 58 L 29 248 L 32 248 Z" fill="#ffffff" opacity="0.02"/>
+          <!-- Sleeve -->
+          <path d="M 27 153 L 153 153 L 146 207 L 34 207 Z" fill="url(#sleeve-lg)"/>
+          <path d="M 27 153 L 153 153" stroke="#c8a45a" stroke-width="0.7" opacity="0.4"/>
+          <path d="M 34 207 L 146 207" stroke="#c8a45a" stroke-width="0.7" opacity="0.4"/>
+          <text x="90" y="184" font-family="'Inter',sans-serif" font-size="7" fill="#c8a45a" text-anchor="middle" letter-spacing="3.5" opacity="0.6">BREWIFY COFFEE</text>
+          <!-- Bottom -->
+          <ellipse cx="90" cy="248" rx="58" ry="13" fill="#040404" stroke="#131313" stroke-width="0.5"/>
+          <!-- Top rim -->
+          <ellipse cx="90" cy="58" rx="72" ry="17" fill="#050505"/>
+          <ellipse cx="90" cy="58" rx="72" ry="17" fill="none" stroke="#181818" stroke-width="1.2"/>
+          <!-- Lid -->
+          <path d="M 15 58 C 15 46 20 42 90 42 C 160 42 165 46 165 58 L 165 72 C 165 82 160 86 90 86 C 20 86 15 82 15 72 Z" fill="url(#lid-lg)"/>
+          <ellipse cx="90" cy="52" rx="44" ry="9" fill="#fff" opacity="0.07"/>
+          <path d="M 74 55 Q 90 62 106 55" stroke="#9e9a94" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M 83 42 L 97 42 Q 100 42 100 45 L 80 45 Q 80 42 83 42 Z" fill="#d0ccc6"/>
+          <ellipse cx="90" cy="42" rx="54" ry="10" fill="url(#lid-lg)" opacity="0.85"/>
+        </g>
+        <text x="90" y="135" font-family="'Playfair Display', Georgia, serif" font-size="44" fill="#c8a45a" text-anchor="middle" opacity="0.88">B</text>
+        <line x1="73" y1="141" x2="107" y2="141" stroke="#c8a45a" stroke-width="0.5" opacity="0.25"/>
+      </svg>
+      <p class="product-name">Large · 16 oz</p>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="width:1px;height:240px;background:#161616;margin:0 20px;align-self:center"></div>
+
+    <!-- CERAMIC ESPRESSO -->
+    <div class="col">
+      <svg width="160" height="150" viewBox="0 0 160 150">
+        <defs>
+          <linearGradient id="ceramic-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1e1e1e"/>
+            <stop offset="25%" stop-color="#151515"/>
+            <stop offset="60%" stop-color="#0c0c0c"/>
+            <stop offset="100%" stop-color="#050505"/>
+          </linearGradient>
+          <linearGradient id="ceramic-body-v" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1a1a1a"/>
+            <stop offset="100%" stop-color="#080808"/>
+          </linearGradient>
+          <radialGradient id="ceramic-inside" cx="40%" cy="38%" r="55%">
+            <stop offset="0%" stop-color="#1a0e08"/>
+            <stop offset="100%" stop-color="#060402"/>
+          </radialGradient>
+          <linearGradient id="saucer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1c1c1c"/>
+            <stop offset="50%" stop-color="#101010"/>
+            <stop offset="100%" stop-color="#060606"/>
+          </linearGradient>
+          <filter id="shadow-ceramic"><feDropShadow dx="1" dy="8" stdDeviation="7" flood-color="#000" flood-opacity="0.6"/></filter>
+        </defs>
+        <!-- Saucer shadow -->
+        <ellipse cx="75" cy="142" rx="60" ry="7" fill="#000" opacity="0.45"/>
+        <g filter="url(#shadow-ceramic)">
+          <!-- SAUCER -->
+          <ellipse cx="75" cy="126" rx="58" ry="13" fill="url(#saucer-grad)"/>
+          <ellipse cx="75" cy="126" rx="54" ry="10" fill="none" stroke="#1c1c1c" stroke-width="1"/>
+          <!-- Saucer well -->
+          <ellipse cx="75" cy="123" rx="24" ry="6" fill="#080808"/>
+          <!-- Saucer highlight rim -->
+          <path d="M 20 122 Q 75 112 130 122" stroke="#242424" stroke-width="0.8" fill="none"/>
+
+          <!-- CUP BODY -->
+          <path d="M 36 62 Q 34 118 48 122 Q 75 126 102 122 Q 116 118 114 62 Z" fill="url(#ceramic-body)"/>
+          <!-- Cup front-face gradient -->
+          <path d="M 36 62 Q 34 118 48 122 Q 75 126 102 122 Q 116 118 114 62 Z" fill="url(#ceramic-body-v)" opacity="0.5"/>
+          <!-- Left light edge -->
+          <path d="M 36 62 Q 34 118 46 122 Q 40 118 38 62 Z" fill="#ffffff" opacity="0.03"/>
+          <!-- Handle -->
+          <path d="M 110 72 Q 128 72 130 85 Q 132 98 110 98" stroke="#1c1c1c" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 110 72 Q 126 73 128 85 Q 130 97 110 98" stroke="#282828" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Cup rim (top ellipse) -->
+          <ellipse cx="75" cy="62" rx="39" ry="11" fill="#0c0c0c"/>
+          <ellipse cx="75" cy="62" rx="39" ry="11" fill="none" stroke="#1e1e1e" stroke-width="1.2"/>
+          <!-- Coffee surface inside -->
+          <ellipse cx="75" cy="64" rx="34" ry="9" fill="url(#ceramic-inside)"/>
+          <!-- Coffee surface highlight (light sheen) -->
+          <ellipse cx="66" cy="62" rx="14" ry="4" fill="#ffffff" opacity="0.03"/>
+          <!-- Rim highlight arc -->
+          <path d="M 44 58 Q 75 50 106 58" stroke="#2a2a2a" stroke-width="0.8" fill="none"/>
+        </g>
+        <!-- Gold B on cup -->
+        <text x="75" y="104" font-family="'Playfair Display', Georgia, serif" font-size="22" fill="#c8a45a" text-anchor="middle" opacity="0.8">B</text>
+      </svg>
+      <p class="product-name">Ceramic · Espresso</p>
+      <p class="product-spec">Matte glaze · Made in Portugal</p>
+    </div>
+
+    <!-- CERAMIC FLAT WHITE -->
+    <div class="col">
+      <svg width="185" height="165" viewBox="0 0 185 165">
+        <defs>
+          <linearGradient id="fw-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#202020"/>
+            <stop offset="22%" stop-color="#161616"/>
+            <stop offset="58%" stop-color="#0d0d0d"/>
+            <stop offset="100%" stop-color="#060606"/>
+          </linearGradient>
+          <radialGradient id="fw-inside" cx="38%" cy="36%" r="55%">
+            <stop offset="0%" stop-color="#2a180e"/>
+            <stop offset="60%" stop-color="#100806"/>
+            <stop offset="100%" stop-color="#060402"/>
+          </radialGradient>
+          <radialGradient id="latte-art" cx="45%" cy="45%" r="50%">
+            <stop offset="0%" stop-color="#f5ece0" stop-opacity="0.18"/>
+            <stop offset="70%" stop-color="#d4a870" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#c8a45a" stop-opacity="0.04"/>
+          </radialGradient>
+          <linearGradient id="fw-saucer" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1e1e1e"/>
+            <stop offset="50%" stop-color="#111"/>
+            <stop offset="100%" stop-color="#070707"/>
+          </linearGradient>
+          <filter id="shadow-fw"><feDropShadow dx="2" dy="10" stdDeviation="9" flood-color="#000" flood-opacity="0.55"/></filter>
+        </defs>
+        <ellipse cx="90" cy="156" rx="70" ry="9" fill="#000" opacity="0.42"/>
+        <g filter="url(#shadow-fw)">
+          <!-- Saucer -->
+          <ellipse cx="90" cy="140" rx="70" ry="16" fill="url(#fw-saucer)"/>
+          <ellipse cx="90" cy="140" rx="65" ry="12" fill="none" stroke="#1c1c1c" stroke-width="1"/>
+          <ellipse cx="90" cy="137" rx="28" ry="7" fill="#080808"/>
+          <path d="M 24 136 Q 90 126 156 136" stroke="#242424" stroke-width="0.8" fill="none"/>
+          <!-- Cup body -->
+          <path d="M 36 55 Q 34 132 52 138 Q 90 144 128 138 Q 146 132 144 55 Z" fill="url(#fw-body)"/>
+          <path d="M 36 55 Q 34 132 50 137 Q 42 130 38 55 Z" fill="#fff" opacity="0.025"/>
+          <!-- Handle -->
+          <path d="M 140 70 Q 162 70 164 90 Q 166 110 140 110" stroke="#1c1c1c" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M 140 70 Q 159 71 161 90 Q 163 109 140 110" stroke="#262626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Rim -->
+          <ellipse cx="90" cy="55" rx="54" ry="14" fill="#0c0c0c"/>
+          <ellipse cx="90" cy="55" rx="54" ry="14" fill="none" stroke="#1e1e1e" stroke-width="1.2"/>
+          <!-- Coffee surface -->
+          <ellipse cx="90" cy="57" rx="49" ry="12" fill="url(#fw-inside)"/>
+          <!-- Latte art (subtle white swirl) -->
+          <ellipse cx="90" cy="57" rx="49" ry="12" fill="url(#latte-art)"/>
+          <path d="M 70 55 Q 90 50 110 55 Q 95 60 90 58 Q 85 60 70 55" fill="#fff" opacity="0.05"/>
+          <!-- Rim highlight -->
+          <path d="M 44 50 Q 90 41 136 50" stroke="#282828" stroke-width="0.8" fill="none"/>
+        </g>
+        <!-- Gold B -->
+        <text x="90" y="112" font-family="'Playfair Display', Georgia, serif" font-size="26" fill="#c8a45a" text-anchor="middle" opacity="0.78">B</text>
+      </svg>
+      <p class="product-name">Ceramic · Flat White</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 03 COFFEE BAGS ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">03 · Coffee Packaging</p>
+  <div class="row" style="gap:64px;padding:20px 0 40px;align-items:flex-end">
+
+    <!-- STANDARD BLACK 12oz -->
+    <div class="col">
+      <svg width="200" height="300" viewBox="0 0 200 300">
+        <defs>
+          <linearGradient id="bag-black-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#222"/>
+            <stop offset="20%" stop-color="#181818"/>
+            <stop offset="55%" stop-color="#0f0f0f"/>
+            <stop offset="80%" stop-color="#0a0a0a"/>
+            <stop offset="100%" stop-color="#060606"/>
+          </linearGradient>
+          <linearGradient id="bag-black-side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#141414"/>
+            <stop offset="100%" stop-color="#070707"/>
+          </linearGradient>
+          <linearGradient id="bag-black-top" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1a1a1a"/>
+            <stop offset="50%" stop-color="#151515"/>
+            <stop offset="100%" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <filter id="shadow-bag"><feDropShadow dx="4" dy="16" stdDeviation="12" flood-color="#000" flood-opacity="0.65"/></filter>
+          <filter id="kraft-texture">
+            <feTurbulence type="fractalNoise" baseFrequency="0.5 0.8" numOctaves="3" seed="12"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.08"/>
+              <feFuncG type="linear" slope="0.08"/>
+              <feFuncB type="linear" slope="0.08"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" mode="screen"/>
+          </filter>
+          <clipPath id="clip-bag-front">
+            <path d="M 28 68 L 148 68 L 148 270 L 28 270 Z"/>
+          </clipPath>
+        </defs>
+        <!-- Shadow -->
+        <ellipse cx="88" cy="286" rx="72" ry="11" fill="#000" opacity="0.5"/>
+        <g filter="url(#shadow-bag)">
+          <!-- Side gusset (depth illusion) -->
+          <path d="M 148 68 L 170 52 L 170 254 L 148 270 Z" fill="url(#bag-black-side)"/>
+          <!-- Front face -->
+          <rect x="28" y="68" width="120" height="202" rx="3" fill="url(#bag-black-body)"/>
+          <!-- Kraft texture overlay -->
+          <rect x="28" y="68" width="120" height="202" rx="3" fill="url(#kraft-texture)" opacity="0.6"/>
+          <!-- Slight left edge light -->
+          <rect x="28" y="68" width="8" height="202" rx="2" fill="#fff" opacity="0.018"/>
+          <!-- Bottom gusset fold -->
+          <rect x="28" y="255" width="120" height="15" rx="0" fill="#080808" opacity="0.8"/>
+          <line x1="28" y1="255" x2="148" y2="255" stroke="#141414" stroke-width="0.5"/>
+
+          <!-- TOP SEAL -->
+          <path d="M 28 68 L 148 68 L 148 40 Q 148 28 88 28 Q 28 28 28 40 Z" fill="url(#bag-black-top)"/>
+          <!-- Seal crimp lines -->
+          <line x1="35" y1="65" x2="141" y2="65" stroke="#1e1e1e" stroke-width="0.6"/>
+          <line x1="37" y1="61" x2="139" y2="61" stroke="#1e1e1e" stroke-width="0.4"/>
+          <line x1="39" y1="57" x2="137" y2="57" stroke="#1e1e1e" stroke-width="0.4"/>
+          <!-- One-way valve (circle on front face) -->
+          <circle cx="118" cy="128" r="8" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1"/>
+          <circle cx="118" cy="128" r="5" fill="#111" stroke="#1e1e1e" stroke-width="0.5"/>
+          <circle cx="118" cy="128" r="2" fill="#161616"/>
+
+          <!-- Side gusset top fold -->
+          <path d="M 148 68 L 170 52 L 170 58 L 148 74 Z" fill="#111"/>
+
+          <!-- Side edge corner -->
+          <line x1="148" y1="68" x2="148" y2="270" stroke="#141414" stroke-width="0.8"/>
+        </g>
+        <!-- Branding on front -->
+        <text x="88" y="165" font-family="'Playfair Display', Georgia, serif" font-size="54" fill="#c8a45a" text-anchor="middle" opacity="0.88">B</text>
+        <text x="88" y="182" font-family="'Inter', sans-serif" font-size="7" fill="#a09a94" text-anchor="middle" letter-spacing="4" opacity="0.45">BREWIFY COFFEE</text>
+        <line x1="62" y1="190" x2="114" y2="190" stroke="#c8a45a" stroke-width="0.5" opacity="0.2"/>
+        <text x="88" y="204" font-family="'Inter', sans-serif" font-size="6.5" fill="#a09a94" text-anchor="middle" letter-spacing="2.5" opacity="0.35">12 OZ · WHOLE BEAN</text>
+      </svg>
+      <p class="product-name">Standard · 12 oz</p>
+      <p class="product-spec">Matte black kraft<br>Gold foil emboss</p>
+    </div>
+
+    <!-- THE 100 MEMBER EDITION (HERO, LARGER) -->
+    <div class="col">
+      <svg width="240" height="360" viewBox="0 0 240 360">
+        <defs>
+          <linearGradient id="bag-gold-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2a1e0c"/>
+            <stop offset="18%" stop-color="#1e1608"/>
+            <stop offset="50%" stop-color="#141008"/>
+            <stop offset="75%" stop-color="#0e0c06"/>
+            <stop offset="100%" stop-color="#080604"/>
+          </linearGradient>
+          <linearGradient id="bag-gold-side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1a1208"/>
+            <stop offset="100%" stop-color="#080604"/>
+          </linearGradient>
+          <linearGradient id="bag-gold-top" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#201808"/>
+            <stop offset="50%" stop-color="#181208"/>
+            <stop offset="100%" stop-color="#0e0c06"/>
+          </linearGradient>
+          <linearGradient id="gold-border-v" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#c8a45a" stop-opacity="0"/>
+            <stop offset="20%" stop-color="#c8a45a" stop-opacity="0.6"/>
+            <stop offset="80%" stop-color="#c8a45a" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#c8a45a" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="gold-logo-glow" cx="50%" cy="45%" r="40%">
+            <stop offset="0%" stop-color="#c8a45a" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#c8a45a" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="shadow-bag-gold"><feDropShadow dx="5" dy="18" stdDeviation="14" flood-color="#000" flood-opacity="0.7"/></filter>
+          <clipPath id="clip-gold-front">
+            <rect x="22" y="80" width="148" height="248"/>
+          </clipPath>
+        </defs>
+        <ellipse cx="104" cy="344" rx="88" ry="13" fill="#000" opacity="0.55"/>
+        <g filter="url(#shadow-bag-gold)">
+          <!-- Side gusset -->
+          <path d="M 170 80 L 196 60 L 196 308 L 170 328 Z" fill="url(#bag-gold-side)"/>
+          <!-- Front face -->
+          <rect x="22" y="80" width="148" height="248" rx="3" fill="url(#bag-gold-body)"/>
+          <!-- Subtle texture -->
+          <rect x="22" y="80" width="148" height="248" rx="3" fill="url(#kraft-texture)" opacity="0.5"/>
+          <!-- Gold border lines (vertical) -->
+          <line x1="29" y1="80" x2="29" y2="328" stroke="url(#gold-border-v)" stroke-width="0.8"/>
+          <line x1="163" y1="80" x2="163" y2="328" stroke="url(#gold-border-v)" stroke-width="0.8"/>
+          <!-- Gold border lines (horizontal) -->
+          <line x1="22" y1="87" x2="170" y2="87" stroke="#c8a45a" stroke-width="0.6" opacity="0.35"/>
+          <line x1="22" y1="321" x2="170" y2="321" stroke="#c8a45a" stroke-width="0.6" opacity="0.35"/>
+          <!-- Bottom gusset -->
+          <rect x="22" y="312" width="148" height="16" fill="#060402" opacity="0.9"/>
+          <line x1="22" y1="312" x2="170" y2="312" stroke="#1e1608" stroke-width="0.5"/>
+          <!-- One-way valve -->
+          <circle cx="154" cy="155" r="9" fill="#0a0804" stroke="#c8a45a" stroke-width="0.6" opacity="0.7"/>
+          <circle cx="154" cy="155" r="5.5" fill="#0d0c06" stroke="#c8a45a" stroke-width="0.4" opacity="0.5"/>
+          <circle cx="154" cy="155" r="2.5" fill="#141008"/>
+          <!-- TOP SEAL -->
+          <path d="M 22 80 L 170 80 L 170 48 Q 170 32 96 32 Q 22 32 22 48 Z" fill="url(#bag-gold-top)"/>
+          <line x1="30" y1="76" x2="162" y2="76" stroke="#2a1e0c" stroke-width="0.7"/>
+          <line x1="32" y1="71" x2="160" y2="71" stroke="#221808" stroke-width="0.5"/>
+          <line x1="34" y1="66" x2="158" y2="66" stroke="#1e1608" stroke-width="0.5"/>
+          <!-- Top gold line -->
+          <line x1="22" y1="80" x2="170" y2="80" stroke="#c8a45a" stroke-width="1" opacity="0.4"/>
+          <!-- Side top fold -->
+          <path d="M 170 80 L 196 60 L 196 66 L 170 86 Z" fill="#181008"/>
+          <line x1="170" y1="80" x2="170" y2="328" stroke="#1e1608" stroke-width="0.8"/>
+        </g>
+        <!-- THE 100 eyebrow -->
+        <text x="96" y="118" font-family="'Inter', sans-serif" font-size="7.5" fill="#c8a45a" text-anchor="middle" letter-spacing="5" opacity="0.8">THE 100</text>
+        <!-- Gold logo glow -->
+        <rect x="60" y="125" width="72" height="80" fill="url(#gold-logo-glow)"/>
+        <!-- Giant B -->
+        <text x="96" y="196" font-family="'Playfair Display', Georgia, serif" font-size="72" fill="#c8a45a" text-anchor="middle" opacity="0.92">B</text>
+        <!-- Brand name -->
+        <text x="96" y="216" font-family="'Inter', sans-serif" font-size="7" fill="#a09a94" text-anchor="middle" letter-spacing="4" opacity="0.5">BREWIFY COFFEE</text>
+        <!-- Gold rule -->
+        <line x1="68" y1="226" x2="124" y2="226" stroke="#c8a45a" stroke-width="0.7" opacity="0.35"/>
+        <!-- Blend name -->
+        <text x="96" y="244" font-family="'Playfair Display', Georgia, serif" font-size="12" fill="#f5f2ee" text-anchor="middle" font-style="italic" opacity="0.65">Still Water</text>
+        <!-- Member number -->
+        <text x="96" y="262" font-family="'Inter', sans-serif" font-size="7" fill="#c8a45a" text-anchor="middle" letter-spacing="3" opacity="0.6">Member No. 001</text>
+        <!-- Bottom spec text -->
+        <text x="96" y="304" font-family="'Inter', sans-serif" font-size="6" fill="#a09a94" text-anchor="middle" letter-spacing="2" opacity="0.3">12 OZ · WHOLE BEAN · SPECIALTY GRADE</text>
+      </svg>
+      <p class="product-name">THE 100 · Member Edition</p>
+      <p class="product-spec">Numbered per member<br>Warm black kraft · Gold foil border</p>
+    </div>
+
+    <!-- IVORY GIFT 6oz -->
+    <div class="col">
+      <svg width="180" height="270" viewBox="0 0 180 270">
+        <defs>
+          <linearGradient id="bag-ivory-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e8e4de"/>
+            <stop offset="25%" stop-color="#f0ece6"/>
+            <stop offset="60%" stop-color="#f5f2ee"/>
+            <stop offset="85%" stop-color="#ede9e3"/>
+            <stop offset="100%" stop-color="#d8d4ce"/>
+          </linearGradient>
+          <linearGradient id="bag-ivory-side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4d0ca"/>
+            <stop offset="100%" stop-color="#b8b4ae"/>
+          </linearGradient>
+          <linearGradient id="bag-ivory-top" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#dedad4"/>
+            <stop offset="100%" stop-color="#e8e4de"/>
+          </linearGradient>
+          <filter id="shadow-bag-ivory"><feDropShadow dx="4" dy="14" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/></filter>
+        </defs>
+        <ellipse cx="82" cy="258" rx="65" ry="9" fill="#000" opacity="0.3"/>
+        <g filter="url(#shadow-bag-ivory)">
+          <path d="M 138 58 L 158 44 L 158 232 L 138 246 Z" fill="url(#bag-ivory-side)"/>
+          <rect x="24" y="58" width="114" height="188" rx="3" fill="url(#bag-ivory-body)"/>
+          <rect x="24" y="58" width="6" height="188" fill="#fff" opacity="0.3"/>
+          <rect x="24" y="234" width="114" height="12" fill="#d4d0ca" opacity="0.6"/>
+          <line x1="24" y1="234" x2="138" y2="234" stroke="#c8c4be" stroke-width="0.5"/>
+          <path d="M 24 58 L 138 58 L 138 36 Q 138 24 81 24 Q 24 24 24 36 Z" fill="url(#bag-ivory-top)"/>
+          <line x1="30" y1="55" x2="132" y2="55" stroke="#d0ccc6" stroke-width="0.6"/>
+          <line x1="32" y1="51" x2="130" y2="51" stroke="#ccc8c2" stroke-width="0.4"/>
+          <line x1="138" y1="58" x2="138" y2="246" stroke="#c8c4be" stroke-width="0.6"/>
+          <path d="M 138 58 L 158 44 L 158 48 L 138 62 Z" fill="#ccc8c2"/>
+        </g>
+        <!-- Black B (debossed look) -->
+        <text x="81" y="152" font-family="'Playfair Display', Georgia, serif" font-size="50" fill="#0a0a0a" text-anchor="middle" opacity="0.12">B</text>
+        <text x="81" y="152" font-family="'Playfair Display', Georgia, serif" font-size="50" fill="#0a0a0a" text-anchor="middle" opacity="0.18">B</text>
+        <text x="81" y="168" font-family="'Inter', sans-serif" font-size="6.5" fill="#0a0a0a" text-anchor="middle" letter-spacing="3.5" opacity="0.25">BREWIFY COFFEE</text>
+        <line x1="58" y1="175" x2="104" y2="175" stroke="#0a0a0a" stroke-width="0.5" opacity="0.12"/>
+        <text x="81" y="188" font-family="'Inter', sans-serif" font-size="6" fill="#0a0a0a" text-anchor="middle" letter-spacing="2" opacity="0.18">6 OZ · GROUND · GIFT EDITION</text>
+      </svg>
+      <p class="product-name">Gift Edition · 6 oz</p>
+      <p class="product-spec">Ivory kraft · Debossed<br>Black seal</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 04 UNIFORM ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">04 · Barista Uniform</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:start">
+
+    <!-- APRON -->
+    <div class="col" style="align-items:center">
+      <svg width="280" height="380" viewBox="0 0 280 380">
+        <defs>
+          <linearGradient id="apron-body" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#161616"/>
+            <stop offset="50%" stop-color="#0e0e0e"/>
+            <stop offset="100%" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <linearGradient id="apron-fold-l" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.03"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="apron-fold-r" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#000" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="apron-shadow"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity="0.5"/></filter>
+          <filter id="fabric-tex">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.15" numOctaves="4" seed="5"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.04"/>
+              <feFuncG type="linear" slope="0.04"/>
+              <feFuncB type="linear" slope="0.04"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" mode="screen"/>
+          </filter>
+          <clipPath id="clip-apron">
+            <path d="M 50 90 L 230 90 L 235 365 L 45 365 Z"/>
+          </clipPath>
+        </defs>
+        <g filter="url(#apron-shadow)">
+          <!-- NECK STRAP -->
+          <path d="M 104 90 L 92 32 Q 88 18 140 14 Q 192 18 188 32 L 176 90" stroke="#141414" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 104 90 L 92 32 Q 88 18 140 14 Q 192 18 188 32 L 176 90" stroke="#1c1c1c" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Neck strap center cross -->
+          <path d="M 140 14 L 140 32" stroke="#111" stroke-width="2" fill="none"/>
+          <!-- D-ring left -->
+          <circle cx="104" cy="90" r="7" stroke="#c8a45a" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <circle cx="104" cy="90" r="7" stroke="#e8c070" stroke-width="0.5" fill="none" opacity="0.3"/>
+          <!-- D-ring right -->
+          <circle cx="176" cy="90" r="7" stroke="#c8a45a" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <circle cx="176" cy="90" r="7" stroke="#e8c070" stroke-width="0.5" fill="none" opacity="0.3"/>
+
+          <!-- WAIST TIES -->
+          <path d="M 50 225 L 14 240 Q -4 255 2 278" stroke="#141414" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 50 225 L 14 240 Q -4 255 2 278" stroke="#1c1c1c" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 230 225 L 266 240 Q 284 255 278 278" stroke="#141414" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 230 225 L 266 240 Q 284 255 278 278" stroke="#1c1c1c" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+          <!-- MAIN APRON BODY -->
+          <path d="M 50 90 L 230 90 L 235 365 L 45 365 Z" fill="url(#apron-body)"/>
+          <!-- Fabric texture -->
+          <path d="M 50 90 L 230 90 L 235 365 L 45 365 Z" fill="url(#fabric-tex)" opacity="0.8"/>
+          <!-- Left light fold -->
+          <path d="M 50 90 L 72 90 L 74 365 L 45 365 Z" fill="url(#apron-fold-l)"/>
+          <!-- Right shadow fold -->
+          <path d="M 210 90 L 230 90 L 235 365 L 212 365 Z" fill="url(#apron-fold-r)"/>
+          <!-- Center seam suggestion -->
+          <line x1="140" y1="90" x2="140" y2="365" stroke="#080808" stroke-width="0.6" opacity="0.6"/>
+
+          <!-- CHEST POCKET -->
+          <rect x="52" y="116" width="68" height="52" rx="2" fill="#111" stroke="#1a1a1a" stroke-width="0.8"/>
+          <rect x="53" y="117" width="66" height="50" rx="1" stroke="#161616" stroke-width="0.5" fill="none" stroke-dasharray="3 2"/>
+          <!-- Pocket flap top edge -->
+          <line x1="52" y1="116" x2="120" y2="116" stroke="#1e1e1e" stroke-width="1"/>
+
+          <!-- BOTTOM HEM -->
+          <line x1="45" y1="350" x2="235" y2="350" stroke="#151515" stroke-width="1.2"/>
+          <line x1="45" y1="354" x2="235" y2="354" stroke="#111" stroke-width="0.5"/>
+
+          <!-- Bottom text -->
+          <text x="140" y="363" font-family="'Inter', sans-serif" font-size="6.5" fill="#a09a94" text-anchor="middle" letter-spacing="4" opacity="0.22">BREWIFY COFFEE</text>
+
+          <!-- WAIST SEAM LINE -->
+          <line x1="50" y1="218" x2="230" y2="218" stroke="#161616" stroke-width="0.8"/>
+        </g>
+        <!-- Gold B embroidery on pocket -->
+        <text x="86" y="152" font-family="'Playfair Display', Georgia, serif" font-size="26" fill="#c8a45a" text-anchor="middle" opacity="0.82">B</text>
+        <line x1="74" y1="157" x2="98" y2="157" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <p class="product-name">Signature Apron</p>
+      <p class="product-spec">Waxed black canvas<br>Brass D-rings · Gold embroidery</p>
+    </div>
+
+    <!-- SHIRT -->
+    <div class="col">
+      <svg width="260" height="300" viewBox="0 0 260 300">
+        <defs>
+          <linearGradient id="shirt-body" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fefefc"/>
+            <stop offset="50%" stop-color="#fafaf8"/>
+            <stop offset="100%" stop-color="#f0ece6"/>
+          </linearGradient>
+          <linearGradient id="shirt-shadow-l" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#e0dcd6" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#c8c4be" stop-opacity="0.4"/>
+          </linearGradient>
+          <linearGradient id="shirt-shadow-r" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e0dcd6" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#b8b4ae" stop-opacity="0.5"/>
+          </linearGradient>
+          <filter id="shirt-shadow"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity="0.3"/></filter>
+          <filter id="fabric-shirt">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04 0.12" numOctaves="4" seed="8"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.035" intercept="0.96"/>
+              <feFuncG type="linear" slope="0.035" intercept="0.96"/>
+              <feFuncB type="linear" slope="0.035" intercept="0.94"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" mode="multiply"/>
+          </filter>
+        </defs>
+        <g filter="url(#shirt-shadow)">
+          <!-- Body -->
+          <path d="M 60 72 L 24 96 L 12 165 L 46 170 L 46 288 L 214 288 L 214 170 L 248 165 L 236 96 L 200 72 Q 180 86 130 86 Q 80 86 60 72 Z" fill="url(#shirt-body)"/>
+          <!-- Fabric texture -->
+          <path d="M 60 72 L 24 96 L 12 165 L 46 170 L 46 288 L 214 288 L 214 170 L 248 165 L 236 96 L 200 72 Q 180 86 130 86 Q 80 86 60 72 Z" fill="url(#fabric-shirt)" opacity="0.7"/>
+          <!-- Left sleeve shadow -->
+          <path d="M 60 72 L 24 96 L 12 165 L 46 170 L 46 180 L 14 175 L 12 165 L 24 96 Z" fill="url(#shirt-shadow-l)"/>
+          <!-- Right sleeve shadow -->
+          <path d="M 200 72 L 236 96 L 248 165 L 214 170 L 214 180 L 246 175 L 248 165 L 236 96 Z" fill="url(#shirt-shadow-r)"/>
+          <!-- Collar -->
+          <path d="M 60 72 Q 80 60 104 55 L 130 72 L 156 55 Q 180 60 200 72 Q 180 86 130 86 Q 80 86 60 72 Z" fill="#f0ece6"/>
+          <path d="M 60 72 Q 80 60 104 55 L 130 72 L 156 55 Q 180 60 200 72" fill="none" stroke="#d8d4ce" stroke-width="0.8"/>
+          <!-- Collar under shadow -->
+          <path d="M 82 76 Q 130 88 178 76" stroke="#d0ccc6" stroke-width="0.5" fill="none"/>
+          <!-- Collar inside fold -->
+          <path d="M 104 55 L 130 70 L 156 55" stroke="#cac6c0" stroke-width="0.8" fill="none"/>
+          <!-- Button placket -->
+          <line x1="130" y1="86" x2="130" y2="288" stroke="#e4e0da" stroke-width="1.2"/>
+          <!-- Buttons -->
+          <circle cx="130" cy="108" r="3.5" stroke="#c8c4be" stroke-width="0.8" fill="#f8f4ee"/>
+          <circle cx="130" cy="108" r="1.5" fill="#e0dcd6"/>
+          <circle cx="130" cy="130" r="3.5" stroke="#c8c4be" stroke-width="0.8" fill="#f8f4ee"/>
+          <circle cx="130" cy="130" r="1.5" fill="#e0dcd6"/>
+          <circle cx="130" cy="152" r="3.5" stroke="#c8c4be" stroke-width="0.8" fill="#f8f4ee"/>
+          <circle cx="130" cy="152" r="1.5" fill="#e0dcd6"/>
+          <!-- Seam lines -->
+          <line x1="46" y1="170" x2="46" y2="288" stroke="#e0dcd6" stroke-width="0.5"/>
+          <line x1="214" y1="170" x2="214" y2="288" stroke="#e0dcd6" stroke-width="0.5"/>
+          <!-- Bottom hem -->
+          <line x1="46" y1="282" x2="214" y2="282" stroke="#e0dcd6" stroke-width="0.8"/>
+        </g>
+        <!-- Subtle B embroidery on left chest -->
+        <text x="90" y="123" font-family="'Playfair Display', Georgia, serif" font-size="16" fill="#c8a45a" text-anchor="middle" opacity="0.35">B</text>
+      </svg>
+      <p class="product-name">Base Shirt · Ivory</p>
+      <p class="product-spec">Slim-fit cotton poplin<br>Hidden buttons · Gold embroidery</p>
+    </div>
+
+    <!-- ACCESSORIES -->
+    <div class="col" style="gap:36px">
+
+      <!-- Service cap -->
+      <div class="col">
+        <svg width="200" height="120" viewBox="0 0 200 120">
+          <defs>
+            <linearGradient id="cap-body" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1a1a1a"/>
+              <stop offset="60%" stop-color="#0e0e0e"/>
+              <stop offset="100%" stop-color="#080808"/>
+            </linearGradient>
+            <linearGradient id="cap-brim" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1c1c1c"/>
+              <stop offset="100%" stop-color="#080808"/>
+            </linearGradient>
+            <filter id="cap-shadow"><feDropShadow dx="1" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/></filter>
+          </defs>
+          <g filter="url(#cap-shadow)">
+            <!-- Brim -->
+            <path d="M 12 96 L 188 96 Q 192 96 192 100 Q 192 108 100 108 Q 8 108 8 100 Q 8 96 12 96 Z" fill="url(#cap-brim)"/>
+            <path d="M 12 96 L 188 96" stroke="#222" stroke-width="0.8"/>
+            <!-- Crown -->
+            <path d="M 24 96 Q 20 52 100 28 Q 180 52 176 96 Z" fill="url(#cap-body)"/>
+            <!-- Crown panels (subtle seam lines) -->
+            <path d="M 100 28 L 100 96" stroke="#141414" stroke-width="0.6"/>
+            <path d="M 100 28 Q 60 60 24 96" stroke="#141414" stroke-width="0.4" opacity="0.5"/>
+            <path d="M 100 28 Q 140 60 176 96" stroke="#141414" stroke-width="0.4" opacity="0.5"/>
+            <!-- Sweatband -->
+            <path d="M 28 93 Q 100 84 172 93" stroke="#1a1a1a" stroke-width="3" fill="none"/>
+            <!-- Brim highlight -->
+            <path d="M 14 97 Q 100 92 186 97" stroke="#252525" stroke-width="0.5" fill="none"/>
+          </g>
+          <!-- Gold B on front -->
+          <text x="100" y="82" font-family="'Playfair Display', Georgia, serif" font-size="22" fill="#c8a45a" text-anchor="middle" opacity="0.85">B</text>
+        </svg>
+        <p class="product-name">Service Cap</p>
+      </div>
+
+      <!-- Enamel pin -->
+      <div class="col">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <defs>
+            <radialGradient id="pin-bg" cx="38%" cy="35%" r="55%">
+              <stop offset="0%" stop-color="#1a1a1a"/>
+              <stop offset="100%" stop-color="#080808"/>
+            </radialGradient>
+            <filter id="pin-shadow"><feDropShadow dx="1" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.6"/></filter>
+          </defs>
+          <g filter="url(#pin-shadow)">
+            <circle cx="50" cy="50" r="42" fill="url(#pin-bg)"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#c8a45a" stroke-width="2" opacity="0.9"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#c8a45a" stroke-width="0.5" opacity="0.25"/>
+            <!-- Metal edge highlight -->
+            <path d="M 20 28 Q 50 8 80 28" stroke="#d8b870" stroke-width="0.8" fill="none" opacity="0.3"/>
+          </g>
+          <text x="50" y="62" font-family="'Playfair Display', Georgia, serif" font-size="36" fill="#c8a45a" text-anchor="middle" opacity="0.9">B</text>
+        </svg>
+        <p class="product-name">Enamel Pin</p>
+        <p class="product-spec">Gold + matte black<br>Cloisonné</p>
+      </div>
+
+      <!-- Name tag -->
+      <div class="col">
+        <svg width="200" height="88" viewBox="0 0 200 88">
+          <defs>
+            <linearGradient id="tag-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e1e1e"/>
+              <stop offset="100%" stop-color="#0a0a0a"/>
+            </linearGradient>
+            <linearGradient id="tag-gold-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d8b870"/>
+              <stop offset="40%" stop-color="#c8a45a"/>
+              <stop offset="100%" stop-color="#9a7a3a"/>
+            </linearGradient>
+            <filter id="tag-shadow"><feDropShadow dx="1" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/></filter>
+          </defs>
+          <g filter="url(#tag-shadow)">
+            <!-- Card body -->
+            <rect x="1" y="1" width="198" height="86" rx="5" fill="url(#tag-bg)"/>
+            <!-- Gold border -->
+            <rect x="1" y="1" width="198" height="86" rx="5" fill="none" stroke="url(#tag-gold-sheen)" stroke-width="1.2" opacity="0.85"/>
+            <!-- Inner inset line -->
+            <rect x="5" y="5" width="190" height="78" rx="3" fill="none" stroke="#1e1e1e" stroke-width="0.5"/>
+            <!-- B monogram panel (left) -->
+            <rect x="10" y="10" width="44" height="68" rx="2" fill="#111"/>
+            <text x="32" y="56" font-family="'Playfair Display', Georgia, serif" font-size="34" fill="#c8a45a" text-anchor="middle" opacity="0.9">B</text>
+            <!-- Divider line -->
+            <line x1="58" y1="14" x2="58" y2="74" stroke="#1e1e1e" stroke-width="1"/>
+            <!-- Name text -->
+            <text x="70" y="40" font-family="'Playfair Display', Georgia, serif" font-size="16" fill="#f5f2ee" opacity="0.9">Marcus</text>
+            <text x="70" y="58" font-family="'Inter', sans-serif" font-size="8" fill="#a09a94" letter-spacing="3" opacity="0.55">HEAD BARISTA</text>
+            <!-- Gold rule under name -->
+            <line x1="70" y1="46" x2="140" y2="46" stroke="#c8a45a" stroke-width="0.5" opacity="0.3"/>
+          </g>
+        </svg>
+        <p class="product-name">Brass Name Tag</p>
+        <p class="product-spec">Engraved · Magnetic back</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 BUSINESS CARD ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">05 · Business Card</p>
+  <div style="display:flex;gap:48px;justify-content:center;align-items:center;flex-wrap:wrap;padding:20px 0">
+
+    <!-- FRONT (black, gold foil B) -->
+    <div class="col">
+      <svg width="380" height="216" viewBox="0 0 380 216">
+        <defs>
+          <linearGradient id="card-black" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#181818"/>
+            <stop offset="50%" stop-color="#0e0e0e"/>
+            <stop offset="100%" stop-color="#080808"/>
+          </linearGradient>
+          <radialGradient id="foil-b" cx="48%" cy="42%" r="45%">
+            <stop offset="0%" stop-color="#e8cc78"/>
+            <stop offset="30%" stop-color="#c8a45a"/>
+            <stop offset="70%" stop-color="#b09040"/>
+            <stop offset="100%" stop-color="#8a6a28"/>
+          </radialGradient>
+          <linearGradient id="card-edge-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#c8a45a" stop-opacity="0"/>
+            <stop offset="20%" stop-color="#c8a45a" stop-opacity="0.7"/>
+            <stop offset="80%" stop-color="#c8a45a" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#c8a45a" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="card-shadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.55"/></filter>
+          <filter id="foil-shine">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feBlend in="SourceGraphic" in2="blur" mode="screen"/>
+          </filter>
+        </defs>
+        <g filter="url(#card-shadow)">
+          <rect x="2" y="2" width="376" height="212" rx="6" fill="url(#card-black)"/>
+          <!-- Card edge painted gold (bottom edge visible) -->
+          <rect x="2" y="210" width="376" height="4" rx="0" fill="url(#card-edge-gold)"/>
+          <!-- Subtle texture lines -->
+          <rect x="2" y="2" width="376" height="212" rx="6" fill="url(#fabric-tex)" opacity="0.4"/>
+          <!-- Inset border (very subtle) -->
+          <rect x="8" y="8" width="364" height="200" rx="4" fill="none" stroke="#161616" stroke-width="0.5"/>
+        </g>
+        <!-- Gold foil B (large, centered) -->
+        <text x="190" y="136" font-family="'Playfair Display', Georgia, serif" font-size="96" fill="url(#foil-b)" text-anchor="middle" filter="url(#foil-shine)" opacity="0.92">B</text>
+        <!-- Brand under B -->
+        <text x="190" y="162" font-family="'Inter', sans-serif" font-size="8.5" fill="#a09a94" text-anchor="middle" letter-spacing="5" opacity="0.4">BREWIFY COFFEE</text>
+        <!-- Top gold rule -->
+        <line x1="2" y1="6" x2="378" y2="6" stroke="url(#card-edge-gold)" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+      <p class="product-name">Front · Matte Black</p>
+      <p class="product-spec">Gold foil stamp · Painted edges</p>
+    </div>
+
+    <!-- BACK (ivory) -->
+    <div class="col">
+      <svg width="380" height="216" viewBox="0 0 380 216">
+        <defs>
+          <linearGradient id="card-ivory" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f8f5ef"/>
+            <stop offset="50%" stop-color="#f5f2ee"/>
+            <stop offset="100%" stop-color="#ede9e3"/>
+          </linearGradient>
+          <filter id="card-shadow-ivory"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3"/></filter>
+        </defs>
+        <g filter="url(#card-shadow-ivory)">
+          <rect x="2" y="2" width="376" height="212" rx="6" fill="url(#card-ivory)"/>
+          <rect x="2" y="210" width="376" height="4" rx="0" fill="#0a0a0a"/>
+          <rect x="2" y="2" width="376" height="212" rx="6" fill="none" stroke="#e0dcd6" stroke-width="0.5"/>
+        </g>
+        <!-- Gold rule accent -->
+        <line x1="36" y1="76" x2="72" y2="76" stroke="#c8a45a" stroke-width="1.5" opacity="0.7"/>
+        <!-- Name -->
+        <text x="36" y="104" font-family="'Playfair Display', Georgia, serif" font-size="22" fill="#0a0a0a" opacity="0.9">Marcus Adeyemi</text>
+        <!-- Title -->
+        <text x="36" y="124" font-family="'Inter', sans-serif" font-size="9" fill="#6a6460" letter-spacing="3">HEAD BARISTA</text>
+        <!-- Divider -->
+        <line x1="36" y1="138" x2="200" y2="138" stroke="#e0dcd6" stroke-width="0.8"/>
+        <!-- Contact info -->
+        <text x="36" y="158" font-family="'Inter', sans-serif" font-size="10" fill="#8a8480">marcus@brewifycoffee.com</text>
+        <text x="36" y="175" font-family="'Inter', sans-serif" font-size="10" fill="#8a8480">brewifycoffee.com</text>
+        <text x="36" y="192" font-family="'Inter', sans-serif" font-size="10" fill="#8a8480">@brewifycoffee</text>
+        <!-- Tiny B monogram top right -->
+        <text x="344" y="52" font-family="'Playfair Display', Georgia, serif" font-size="28" fill="#0a0a0a" text-anchor="middle" opacity="0.08">B</text>
+      </svg>
+      <p class="product-name">Back · Soft-Touch Ivory</p>
+      <p class="product-spec">600gsm · Uncoated<br>Black painted edges</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 06 TOTE ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">06 · Carry</p>
+  <div style="display:flex;gap:80px;justify-content:center;align-items:flex-end;flex-wrap:wrap;padding:20px 0">
+
+    <!-- CANVAS TOTE -->
+    <div class="col">
+      <svg width="260" height="320" viewBox="0 0 260 320">
+        <defs>
+          <linearGradient id="tote-body" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1c1c1c"/>
+            <stop offset="40%" stop-color="#141414"/>
+            <stop offset="80%" stop-color="#0e0e0e"/>
+            <stop offset="100%" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <linearGradient id="tote-side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0c0c0c"/>
+            <stop offset="100%" stop-color="#060606"/>
+          </linearGradient>
+          <filter id="tote-shadow"><feDropShadow dx="4" dy="14" stdDeviation="14" flood-color="#000" flood-opacity="0.55"/></filter>
+          <filter id="canvas-tex">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03 0.2" numOctaves="4" seed="9"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.06"/>
+              <feFuncG type="linear" slope="0.06"/>
+              <feFuncB type="linear" slope="0.06"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" mode="screen"/>
+          </filter>
+          <clipPath id="clip-tote">
+            <path d="M 22 66 L 218 66 L 222 298 L 18 298 Z"/>
+          </clipPath>
+        </defs>
+        <ellipse cx="120" cy="310" rx="88" ry="10" fill="#000" opacity="0.4"/>
+        <g filter="url(#tote-shadow)">
+          <!-- Left handle -->
+          <path d="M 56 66 L 46 18 Q 44 8 64 8 Q 84 8 82 18 L 76 66" stroke="#1a1a1a" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 56 66 L 46 18 Q 44 8 64 8 Q 84 8 82 18 L 76 66" stroke="#242424" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Right handle -->
+          <path d="M 178 66 L 168 18 Q 166 8 186 8 Q 206 8 204 18 L 198 66" stroke="#1a1a1a" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M 178 66 L 168 18 Q 166 8 186 8 Q 206 8 204 18 L 198 66" stroke="#242424" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Bag body -->
+          <path d="M 22 66 L 218 66 L 222 298 L 18 298 Z" fill="url(#tote-body)"/>
+          <!-- Canvas texture -->
+          <path d="M 22 66 L 218 66 L 222 298 L 18 298 Z" fill="url(#canvas-tex)" opacity="0.9"/>
+          <!-- Left light strip -->
+          <path d="M 22 66 L 38 66 L 37 298 L 18 298 Z" fill="#fff" opacity="0.018"/>
+          <!-- Top fold crease -->
+          <line x1="22" y1="66" x2="218" y2="66" stroke="#1e1e1e" stroke-width="1.2"/>
+          <!-- Gusset bottom fold -->
+          <path d="M 18 298 L 22 280 L 218 280 L 222 298 Z" fill="#080808"/>
+          <line x1="22" y1="280" x2="218" y2="280" stroke="#141414" stroke-width="0.8"/>
+          <!-- Side fold hint -->
+          <line x1="22" y1="66" x2="18" y2="298" stroke="#0d0d0d" stroke-width="1"/>
+          <line x1="218" y1="66" x2="222" y2="298" stroke="#0d0d0d" stroke-width="1"/>
+        </g>
+        <!-- Screenprinted B (slightly rougher edge than foil) -->
+        <text x="120" y="195" font-family="'Playfair Display', Georgia, serif" font-size="76" fill="#c8a45a" text-anchor="middle" opacity="0.82">B</text>
+        <text x="120" y="218" font-family="'Inter', sans-serif" font-size="7.5" fill="#c8a45a" text-anchor="middle" letter-spacing="4.5" opacity="0.4">BREWIFY COFFEE</text>
+      </svg>
+      <p class="product-name">Canvas Tote</p>
+      <p class="product-spec">14oz heavyweight black canvas<br>Screenprinted gold · Riveted straps</p>
+    </div>
+
+    <!-- PAPER TAKEAWAY BAG -->
+    <div class="col">
+      <svg width="200" height="280" viewBox="0 0 200 280">
+        <defs>
+          <linearGradient id="pbag-body" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#202020"/>
+            <stop offset="25%" stop-color="#181818"/>
+            <stop offset="55%" stop-color="#111"/>
+            <stop offset="80%" stop-color="#0a0a0a"/>
+            <stop offset="100%" stop-color="#070707"/>
+          </linearGradient>
+          <linearGradient id="pbag-side" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#141414"/>
+            <stop offset="100%" stop-color="#060606"/>
+          </linearGradient>
+          <filter id="pbag-shadow"><feDropShadow dx="4" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.55"/></filter>
+        </defs>
+        <ellipse cx="90" cy="270" rx="60" ry="9" fill="#000" opacity="0.42"/>
+        <g filter="url(#pbag-shadow)">
+          <!-- Handle (twisted paper) -->
+          <path d="M 42 52 Q 36 20 52 14 Q 68 8 72 20 L 70 52" stroke="#1a1a1a" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M 42 52 Q 38 22 52 16 Q 66 10 70 22 L 68 52" stroke="#242424" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M 130 52 Q 124 20 138 14 Q 154 8 158 20 L 156 52" stroke="#1a1a1a" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M 130 52 Q 126 22 138 16 Q 154 10 156 22 L 154 52" stroke="#242424" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Side gusset -->
+          <path d="M 150 52 L 168 40 L 168 238 L 150 250 Z" fill="url(#pbag-side)"/>
+          <!-- Front face -->
+          <rect x="22" y="52" width="128" height="198" rx="2" fill="url(#pbag-body)"/>
+          <rect x="22" y="52" width="128" height="198" rx="2" fill="url(#kraft-texture)" opacity="0.6"/>
+          <!-- Left catch light -->
+          <rect x="22" y="52" width="7" height="198" fill="#fff" opacity="0.02"/>
+          <!-- Top fold -->
+          <rect x="22" y="38" width="128" height="18" fill="#161616"/>
+          <line x1="22" y1="52" x2="150" y2="52" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="22" y1="46" x2="150" y2="46" stroke="#181818" stroke-width="0.5"/>
+          <!-- Bottom gusset -->
+          <rect x="22" y="236" width="128" height="14" fill="#080808"/>
+          <line x1="22" y1="236" x2="150" y2="236" stroke="#141414" stroke-width="0.5"/>
+          <!-- Side top fold -->
+          <path d="M 150 52 L 168 40 L 168 44 L 150 56 Z" fill="#111"/>
+          <line x1="150" y1="52" x2="150" y2="250" stroke="#141414" stroke-width="0.6"/>
+        </g>
+        <!-- B Logo -->
+        <text x="86" y="162" font-family="'Playfair Display', Georgia, serif" font-size="60" fill="#c8a45a" text-anchor="middle" opacity="0.85">B</text>
+        <text x="86" y="178" font-family="'Inter', sans-serif" font-size="6.5" fill="#a09a94" text-anchor="middle" letter-spacing="4" opacity="0.4">BREWIFY COFFEE</text>
+      </svg>
+      <p class="product-name">Takeaway Bag</p>
+      <p class="product-spec">Matte black kraft · Twisted handles<br>Gold foil logo</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 07 COASTERS ══ -->
+<section class="sec">
+  <p class="sec-eyebrow">07 · Coasters</p>
+  <div style="display:flex;gap:52px;justify-content:center;align-items:center;flex-wrap:wrap;padding:20px 0">
+
+    <!-- Dark felt -->
+    <div class="col">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <defs>
+          <radialGradient id="coaster-dark" cx="40%" cy="36%" r="60%">
+            <stop offset="0%" stop-color="#1e1e1e"/>
+            <stop offset="60%" stop-color="#111"/>
+            <stop offset="100%" stop-color="#070707"/>
+          </radialGradient>
+          <filter id="coaster-shadow"><feDropShadow dx="1" dy="6" stdDeviation="7" flood-color="#000" flood-opacity="0.6"/></filter>
+        </defs>
+        <g filter="url(#coaster-shadow)">
+          <circle cx="70" cy="70" r="60" fill="url(#coaster-dark)"/>
+          <circle cx="70" cy="70" r="60" fill="url(#fabric-tex)" opacity="0.8"/>
+          <circle cx="70" cy="70" r="56" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+          <circle cx="70" cy="70" r="50" fill="none" stroke="#c8a45a" stroke-width="0.8" opacity="0.35"/>
+          <!-- Surface highlight arc -->
+          <path d="M 28 48 Q 70 26 112 48" stroke="#2a2a2a" stroke-width="0.7" fill="none"/>
+        </g>
+        <text x="70" y="84" font-family="'Playfair Display', Georgia, serif" font-size="40" fill="#c8a45a" text-anchor="middle" opacity="0.82">B</text>
+      </svg>
+      <p class="product-name">Felt Coaster · Black</p>
+    </div>
+
+    <!-- Ivory felt -->
+    <div class="col">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <defs>
+          <radialGradient id="coaster-ivory" cx="40%" cy="36%" r="60%">
+            <stop offset="0%" stop-color="#f8f5ef"/>
+            <stop offset="60%" stop-color="#f0ece6"/>
+            <stop offset="100%" stop-color="#e0dcd6"/>
+          </radialGradient>
+          <filter id="coaster-shadow-iv"><feDropShadow dx="1" dy="6" stdDeviation="7" flood-color="#000" flood-opacity="0.35"/></filter>
+        </defs>
+        <g filter="url(#coaster-shadow-iv)">
+          <circle cx="70" cy="70" r="60" fill="url(#coaster-ivory)"/>
+          <circle cx="70" cy="70" r="56" fill="none" stroke="#d8d4ce" stroke-width="1"/>
+          <circle cx="70" cy="70" r="50" fill="none" stroke="#0a0a0a" stroke-width="0.6" opacity="0.12"/>
+          <path d="M 28 48 Q 70 28 112 48" stroke="#e8e4de" stroke-width="0.8" fill="none"/>
+        </g>
+        <text x="70" y="84" font-family="'Playfair Display', Georgia, serif" font-size="40" fill="#0a0a0a" text-anchor="middle" opacity="0.2">B</text>
+      </svg>
+      <p class="product-name">Felt Coaster · Ivory</p>
+    </div>
+
+    <!-- Concrete -->
+    <div class="col">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <defs>
+          <radialGradient id="coaster-concrete" cx="38%" cy="34%" r="60%">
+            <stop offset="0%" stop-color="#2a2520"/>
+            <stop offset="60%" stop-color="#1a1714"/>
+            <stop offset="100%" stop-color="#0e0c0a"/>
+          </radialGradient>
+          <filter id="coaster-shadow-c"><feDropShadow dx="2" dy="7" stdDeviation="8" flood-color="#000" flood-opacity="0.55"/></filter>
+          <filter id="concrete-tex">
+            <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="5" seed="4"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.1"/>
+              <feFuncG type="linear" slope="0.1"/>
+              <feFuncB type="linear" slope="0.1"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" mode="screen"/>
+          </filter>
+        </defs>
+        <g filter="url(#coaster-shadow-c)">
+          <circle cx="70" cy="70" r="60" fill="url(#coaster-concrete)"/>
+          <circle cx="70" cy="70" r="60" fill="url(#concrete-tex)" opacity="0.7"/>
+          <circle cx="70" cy="70" r="57" fill="none" stroke="#1e1e1e" stroke-width="1"/>
+          <path d="M 26 48 Q 70 26 114 48" stroke="#302c28" stroke-width="0.7" fill="none"/>
+        </g>
+        <text x="70" y="84" font-family="'Playfair Display', Georgia, serif" font-size="40" fill="#c8a45a" text-anchor="middle" opacity="0.7">B</text>
+      </svg>
+      <p class="product-name">Concrete Coaster</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<div style="max-width:660px;margin:0 auto;padding:100px 60px;text-align:center;border-bottom:1px solid #161616">
+  <p style="font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:#a09a94;opacity:.35;margin-bottom:22px">Design Principle</p>
+  <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;line-height:1.6;color:#f5f2ee">
+    Every surface is a statement.<br>
+    <em style="color:#c8a45a">Nothing exists without intent.</em>
+  </p>
+</div>
+
+<div style="padding:44px 60px;display:flex;justify-content:space-between;align-items:center;max-width:1300px;margin:0 auto">
+  <p style="font-size:9px;color:#a09a94;opacity:.25;letter-spacing:.25em;text-transform:uppercase">Brewify Coffee · Brand Identity System · 2026</p>
+  <p style="font-size:9px;color:#a09a94;opacity:.25;letter-spacing:.25em;text-transform:uppercase">brewifycoffee.com</p>
+</div>
+
+</div><!-- .page -->
+</body>
+</html>
